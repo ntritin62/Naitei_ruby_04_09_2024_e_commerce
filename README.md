@@ -1,0 +1,1 @@
+# Naitei_ruby_04_09_2024_e_commerce
