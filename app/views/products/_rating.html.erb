@@ -1,0 +1,18 @@
+<div id="rating" class="flex items-center">
+  <% rating_info = star_rating(rating) %>
+  <% rating_info[:full_stars].times do %>
+    <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 15l-5.878 3.09 1.121-6.552L1 7.635l6.591-.957L10 1l2.409 5.678 6.591.957-4.243 3.903 1.121 6.552z"/>
+    </svg>
+  <% end %>
+  <% if rating_info[:half_star] %>
+    <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 15l-5.878 3.09 1.121-6.552L1 7.635l6.591-.957L10 1l2.409 5.678 6.591.957-4.243 3.903 1.121 6.552z"/>
+    </svg>
+  <% end %>
+  <% rating_info[:empty_stars].times do %>
+    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 15l-5.878 3.09 1.121-6.552L1 7.635l6.591-.957L10 1l2.409 5.678 6.591.957-4.243 3.903 1.121 6.552z"/>
+    </svg>
+  <% end %>
+</div>

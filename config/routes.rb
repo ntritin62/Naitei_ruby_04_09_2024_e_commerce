@@ -11,13 +11,20 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
-
-    resources :products
     resources :users do
-      resources :addresses
+      resources :addresses, except: :show
     end
     resources :categories do
       resources :products
     end
+    resources :carts, only: :show do
+      post 'add_item', on: :collection
+      member do
+        post 'increment_item'
+        post 'decrement_item'
+        delete 'remove_item'
+      end
+    end
+    resources :products, only: %i(show index)
   end
 end

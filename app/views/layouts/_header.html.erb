@@ -19,10 +19,15 @@
           <li><%= link_to t(".help"), static_pages_help_path(locale: I18n.locale) %></li>
           <% if logged_in? %>
             <div class="text-primary flex gap-[15px] items-center">
-              <div class="relative z-0">
-                <i class="fa-solid fa-cart-shopping text-xl"></i>
-                <span id="cart-items" class="absolute rounded-full top-[-10px] right-[-10px]  w-[20px] h-[20px] flex items-center justify-center text-white text-sm bg-red-600">2</span>
-              </div>
+              <% cart = current_user.cart || current_user.create_cart %>
+              <%= link_to cart_path(cart), class: "flex items-center" do %>
+                <div class="relative z-0">
+                  <i class="fa-solid fa-cart-shopping text-xl"></i>
+                  <span id="cart-items" class="absolute rounded-full top-[-10px] right-[-10px] w-[20px] h-[20px] flex items-center justify-center text-white text-sm bg-red-600">
+                    <%= cart.cart_items.count %>
+                  </span>
+                </div>
+              <% end %>
               <div class="bg-primary w-[2px] h-full"></div>
               <div class="group relative ">
                 <i class="fa-solid fa-user text-xl cursor-pointer"></i>

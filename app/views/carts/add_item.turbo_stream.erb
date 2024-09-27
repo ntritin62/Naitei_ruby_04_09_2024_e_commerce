@@ -1,0 +1,16 @@
+<%= turbo_stream.update "cart-items" do %>
+  <%= @cart.cart_items.count %>
+<% end %>
+<%= turbo_stream.replace "flash-messages", partial: "layouts/notification" %>
+<%= turbo_stream.update "cart-price" do %>
+  <%= @total %>
+<% end %>
+<%= turbo_stream.update "total-price" do %>
+  <%= @total %>
+<% end %>
+<%= turbo_stream.update "cart-items-quantity" do %>
+  <%= @cart.cart_items.count %>
+<% end %>
+<%= turbo_stream.replace "quantity-input" do %>
+  <%= render "products/cart_form" %>
+<% end %>

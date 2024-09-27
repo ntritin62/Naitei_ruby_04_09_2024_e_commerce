@@ -1,0 +1,29 @@
+<div id="cart-item-<%= cart_item.id %>" class="grid grid-cols-12 gap-3 py-4 border-b-primary border-b-solid border-b-[1px]">
+  <div class="col-span-3">
+    <figure class="h-[200px] rounded-lg overflow-hidden object-contain">
+      <%= image_tag cart_item.product.img_url, alt: cart_item.product.name, class: "h-full" %>
+    </figure>
+  </div>
+  <div class="col-span-6">
+    <h2 class="text-xl font-bold">
+      <%= link_to cart_item.product.name, product_path(cart_item.product), class: "hover:underline" %>
+    </h2>
+    <p class="flex gap-2 mt-5"><span class="text-primary"><%= t ".category" %>:</span><%= cart_item.product.category.name %></p>
+  </div>
+  <div class="col-span-3 flex flex-col justify-between gap-3 items-center border-l-[1px] border-l-solid border-l-primary">
+    <p class="text-xl font-bold">$<%= cart_item.product.price %></p>
+    <div class="flex items-center space-x-4" data-controller="quantity">
+      <%= button_to decrement_item_cart_path(cart_item), method: :post, class: "flex items-center justify-center w-8 h-8 border border-gray-300 rounded-full hover:bg-gray-200 focus:outline-none" do %>
+        <span class="text-lg">-</span>
+      <% end %>
+      <p id="cart-item-<%= cart_item.id %>-quantity"><%= cart_item.quantity %></p>
+      <%= button_to increment_item_cart_path(cart_item), method: :post, class: "flex items-center justify-center w-8 h-8 border border-gray-300 rounded-full hover:bg-gray-200 focus:outline-none" do %>
+        <span class="text-lg">+</span>
+      <% end %>
+    </div>
+    <%= button_to remove_item_cart_path(cart_item), method: :delete, class: "flex items-center text-xl text-primary gap-5" do %>
+      <i class="fa-solid fa-trash"></i>
+      <p class="text-base"><%= t ".remove" %></p>
+    <% end %>
+  </div>
+</div>

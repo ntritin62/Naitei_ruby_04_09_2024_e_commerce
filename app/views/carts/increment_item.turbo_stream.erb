@@ -1,0 +1,13 @@
+<%= turbo_stream.update "cart-item-#{@cart_item.id}-quantity" do %>
+  <%= @cart_item.quantity %>
+<% end %>
+<%= turbo_stream.replace "flash-messages", partial: "layouts/notification" %>
+<%= turbo_stream.update "cart-price" do %>
+  <%= @total %>
+<% end %>
+<%= turbo_stream.update "total-price" do %>
+  <%= @total %>
+<% end %>
+<%= turbo_stream.update "cart-items-quantity" do %>
+  <%= @cart.cart_items.count %>
+<% end %>
