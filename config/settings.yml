@@ -1,0 +1,14 @@
+value:
+  max_user_name: 50
+  max_user_email: 255
+  min_user_password: 8
+  max_place_length: 500
+  max_category_name: 255
+  max_receiver_name: 300
+  valid_email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  phone: 10
+  phone_format: /\A\d{10}\z/
+  comment_length: 1000
+  min_numeric: 0
+  rate_min: 1
+  rate_max: 5
