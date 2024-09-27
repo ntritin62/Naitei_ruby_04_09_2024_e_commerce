@@ -77,3 +77,38 @@ en:
       address: "Addresses"
       order: "My Orders"
       manage_account: "Manage My Account"
+    profile_breadcrumb:
+      home: "Home"
+      welcome: "Welcome"
+      my_account: "My account"
+  addresses:
+    unauthenticated: "Unauthenticated"
+    unauthorized: "Unauthorized"
+    not_found: "User not found!"
+    not_found_address: "Address not found!"
+    index:
+      address: "Address"
+      default_address: "Default Address"
+      add_new_address: "Add new address"
+      no_default_address: "No default address."
+    address:
+      delete_confirm: "Are you sure?"
+      receiver_name: "Receiver Name"
+      address: "Address"
+      phone: "Phone"
+    form:
+      receiver_name: "Receiver Name"
+      place: "Place"
+      phone: "Phone"
+      default: "Set as Default"
+    new:
+      new_address: "Add address"
+    create:
+      success: "Address was successfully created."
+    edit:
+      edit_address: "Edit address"
+    update:
+      success: "Address was successfully updated."
+    destroy:
+      success: "Address was successfully deleted."
+      fail: "Deleted address failed."

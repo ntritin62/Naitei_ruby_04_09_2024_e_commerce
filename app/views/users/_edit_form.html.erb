@@ -1,7 +1,11 @@
 <%= form_with model: @user, html: { class: "flex justify-center gap-2 w-[350px]" } do |f| %>
   <div class="flex flex-col gap-[10px] justify-center ">
-    <%= f.label t(".avatar"), class: "font-bold" %>
-    <%= user_avatar(@user, class: "w-[120px] h-[120px] rounded-full") %>
+    <%= f.label :avatar, t(".avatar"), class: "font-bold" %>
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar.variant(:display), class: "w-[120px] h-[120px] rounded-full" %>
+    <% else %>
+      <%= gravatar_for @user %>
+    <% end %>
     <span class="image"><%= f.file_field :avatar, accept: Settings.ui.img_accept_format %></span>
   </div>
   <div class="flex flex-col gap-3">

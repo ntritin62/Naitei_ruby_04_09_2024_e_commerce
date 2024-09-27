@@ -1,11 +1,8 @@
 <% provide :button_text, t(".save_changes") %>
-<div class="mb-[50px] text-sm flex justify-between items-center">
-  <p>Home / <span class="font-bold">My Account</span></p>
-  <p>Welcome! <span class="text-primary"><%= @user.user_name %></span></p>
-</div>
+<%= render "shared/profile_breadcrumb" %>
 <div class="grid grid-cols-12 mb-[50px]">
   <div class="col-span-3">
-    <%= render "shared/profile_sidebar"%>
+    <%= render "shared/profile_sidebar" %>
   </div>
   <div class="col-span-9 px-[50px] py-[30px] bg-white rounded-lg drop-shadow-lg">
     <div class="flex items-center gap-3">
@@ -15,7 +12,7 @@
       <h2 class="text-primary font-bold text-xl"><%= t ".edit_account" %></h2>
     </div>
     <div class="ml-[30px] mt-[50px] flex justify-center">
-      <%= render "edit_form"%>
+      <%= render "edit_form" %>
     </div>
   </div>
 </div>

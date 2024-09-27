@@ -1,7 +1,4 @@
-<div class="mb-[50px] text-sm flex justify-between items-center">
-  <p><%= t ".home" %> / <span class="font-bold"><%= t ".my_account" %></span></p>
-  <p><%= t ".welcome" %>! <span class="text-primary"><%= @user.user_name %></span></p>
-</div>
+<%= render "shared/profile_breadcrumb" %>
 <div class="grid grid-cols-12">
   <div class="col-span-3">
     <%= render "shared/profile_sidebar" %>

@@ -82,58 +82,38 @@ vi:
       address: "Địa chỉ"
       order: "Đơn hàng của tôi"
       manage_account: "Quản lý tài khoản"
-  activerecord:
-    models:
-      user: "Người dùng"
+    profile_breadcrumb:
+      welcome: "Chào mừng"
+      my_account: "Tài khoản của tôi"
+      user_name: "Tên người dùng"
+  addresses:
+    unauthenticated: "Vui lòng đăng nhập"
+    unauthorized: "Bạn không có quyền truy cập vào trang này"
+    not_found: "Không tìm thấy người dùng!"
+    not_found_address: "Không tìm thấy địa chỉ!"
+    index:
+      address: "Địa chỉ nhận hàng"
+      default_address: "Địa chỉ mặc định"
+      add_new_address: "Thêm địa chỉ mới"
+      no_default_address: "Chưa có địa chỉ mặc định."
+    address:
+      delete_confirm: "Bạn chắc chưa?"
+      receiver_name: "Người nhận"
       address: "Địa chỉ"
-      category: "Danh mục"
-      product: "Sản phẩm"
-      cart: "Giỏ hàng"
-      cart_item: "Mặt hàng trong giỏ"
-      order: "Đơn hàng"
-      order_item: "Mặt hàng trong đơn"
-      review: "Đánh giá"
-    attributes:
-      user:
-        user_name: "Tên"
-        email: "Email"
-        password: "Mật Khẩu"
-        password_confirmation: "Mật khẩu xác nhận"
-        role: "Vai trò"
-      address:
-        receiver_name: "Tên người nhận"
-        place: "Địa chỉ"
-        phone: "Số điện thoại"
-        default: "Mặc định"
-      category:
-        name: "Tên danh mục"
-      product:
-        name: "Tên sản phẩm"
-        desc: "Mô tả"
-        price: "Giá"
-        stock: "Số lượng"
-        rating: "Đánh giá"
-        category: "Danh mục"
-      cart:
-        user: "Người dùng"
-      cart_item:
-        product: "Sản phẩm"
-        cart: "ID giỏ hàng"
-        quantity: "Số lượng"
-      order:
-        user: "Người dùng"
-        address: "Địa chỉ"
-        payment_method: "Phương thức thanh toán"
-        status: "Trạng thái"
-        total: "Tổng tiền"
-        cancel_reason: "Lý do hủy"
-      order_item:
-        product: "Sản phẩm"
-        order: "Đơn hàng"
-        quantity: "Số lượng"
-        price: "Giá"
-      review:
-        product: "Sản phẩm"
-        user: "Người dùng"
-        rating: "Đánh giá"
-        comment: "Nhận xét"
+      phone: "Số điện thoại"
+    form:
+      receiver_name: "Tên người nhận"
+      place: "Nơi nhận"
+      phone: "Số điện thoại"
+      default: "Đặt làm địa chỉ mặc định"
+    create:
+      success: "Địa chỉ được tạo thành công."
+    new:
+      new_address: "Thêm địa chỉ"
+    edit:
+      edit_address: "Sửa địa chỉ"
+    update:
+      success: "Địa chỉ được cập nhật thành công."
+    destroy:
+      success: "Địa chỉ được xoá thành công."
+      fail: "Xoá địa chỉ thất bại."
