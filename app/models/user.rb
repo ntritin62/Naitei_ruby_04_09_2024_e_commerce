@@ -1,8 +1,12 @@
 class User < ApplicationRecord
   SIGN_UP_REQUIRE_ATTRIBUTES = %i(user_name email password
-password_confirmation).freeze
+password_confirmation avatar).freeze
   attr_accessor :remember_token
 
+  has_one_attached :avatar do |attachable|
+    attachable.variant :display, resize_to_limit: [Settings.ui.avatar_size,
+                            Settings.ui.avatar_size]
+  end
   has_many :addresses, dependent: :destroy
   has_one :cart, dependent: :destroy
   has_many :orders, dependent: :destroy
@@ -48,8 +52,11 @@ password_confirmation).freeze
     update_attribute :remember_digest, User.digest(remember_token)
   end
 
-  def authenticated? remember_token
-    BCrypt::Password.new(remember_digest).is_password? remember_token
+  def authenticated? attribute, token
+    digest = send "#{attribute}_digest"
+    return if digest.nil?
+
+    BCrypt::Password.new(digest).is_password? token
   end
 
   def forget
