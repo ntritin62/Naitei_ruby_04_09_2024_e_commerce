@@ -5,6 +5,8 @@ ruby "3.2.2"
 
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
+gem "config"
+gem "font-awesome-sass"
 gem "foreman", "~> 0.87.2"
 gem "image_processing", "~> 1.2"
 gem "importmap-rails"
