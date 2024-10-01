@@ -1,0 +1,23 @@
+<nav class="flex justify-between items-center mt-4">
+  <% if @pagy.prev %>
+    <%= link_to t('paggy.previous'), products_path(locale: I18n.locale, page: @pagy.prev), class: 'px-4 py-2 bg-primary text-white rounded hover:bg-primary_hover focus:outline-none focus:ring-2 focus:ring-blue-400' %>
+  <% else %>
+    <span class="px-4 py-2 text-gray-300"><%= t('pagy.previous') %></span>
+  <% end %>
+
+  <div class="flex items-center">
+    <% (1..@pagy.last).each do |page| %>
+      <% if page == @pagy.page %>
+        <span class="mx-1 px-2 py-1 text-gray-500"><%= page %></span> 
+      <% else %>
+        <%= link_to page, products_path(locale: I18n.locale, page: page), class: 'mx-1 px-2 py-1 text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-blue-400' %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @pagy.next %>
+    <%= link_to t('pagy.next'), products_path(locale: I18n.locale, page: @pagy.next), class: 'px-4 py-2 bg-primary text-white rounded hover:bg-primary_hover focus:outline-none focus:ring-2 focus:ring-blue-400' %>
+  <% else %>
+    <span class="px-4 py-2 text-gray-300"><%= t('pagy.next') %></span>
+  <% end %>
+</nav>

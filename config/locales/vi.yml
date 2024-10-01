@@ -29,6 +29,19 @@ vi:
     help:
       search: "Tìm kiếm"
       question: "Các câu hỏi thường gặp"
+    home:
+      title_list1: "Các cuốn sách được đánh giá cao"
+      see_more: "Xem thêm"
+      see_now: "Xem ngay"
+  products:
+    index:
+      title: "Danh sách tất cả sản phẩm "
+      book: "cuốn sách"
+    show:
+      not_found: "Sản phẩm không tìm thấy."
+  pagy:
+    previous: "Trước"
+    next: "Sau"
   sessions:
     new:
       login: "Đăng nhập"

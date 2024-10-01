@@ -29,6 +29,19 @@ en:
     help:
       search: "Search"
       question: "Frequently asked questions"
+    home:
+      title_list1: "Highly rated books"
+      see_more: "See more"
+      see_now: "See now"
+  products:
+    index:
+      title: "List of all books"
+      book: "books"
+    show:
+      not_found: "Product not found."
+  pagy:
+    previous: "Previous"
+    next: "Next"
   sessions:
     new:
       login: "Login"
