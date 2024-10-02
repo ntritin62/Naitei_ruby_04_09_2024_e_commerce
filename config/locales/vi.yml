@@ -42,6 +42,15 @@ vi:
   pagy:
     previous: "Trước"
     next: "Sau"
+  categories:
+    category:
+      product: "sản phẩm"
+    index:
+      categories: "Danh mục"
+    show:
+      categories_name: "Danh mục: %{cate_name}"
+      quantity_pro_count: "Số lượng: %{count} sách"
+      not_found: "Không có bất kỳ danh mục nào"
   sessions:
     new:
       login: "Đăng nhập"
