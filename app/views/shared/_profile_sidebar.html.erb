@@ -1,0 +1,14 @@
+<aside class="flex flex-col gap-[10px]">
+  <section class="flex gap-[20px] items-center">
+    <%= user_avatar(@user, class: "w-[120px] h-[120px] rounded-full") %>
+    <h1><%= @user.user_name %></h1>
+  </section>
+  <ul>
+    <h2 class="font-bold"><%= t ".manage_account" %></h2>
+    <li class="ml-[20px] mt-[10px] <%= current_page?(edit_user_path) ? "text-primary" : "" %>">
+      <%= link_to t(".profile"), edit_user_path %>
+    </li>
+    <li class="ml-[20px]"><%= t ".address" %></li>
+  </ul>
+  <h2 class="font-bold"><%= t ".order" %></h2>
+</aside>

@@ -12,3 +12,7 @@ value:
   min_numeric: 0
   rate_min: 1
   rate_max: 5
+ui:
+  avatar_size: 150
+  default_avatar_size: 80
+  img_accept_format: "image/jpeg,image/gif,image/png"

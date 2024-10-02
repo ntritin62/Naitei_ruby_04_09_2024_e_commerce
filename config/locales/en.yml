@@ -41,3 +41,26 @@ en:
       successful: "Log in successful!"
       invalid: "Incorrect email or password!"
       not_activated: "Not activated yet. Check your email to activate account"
+  users:
+    unauthenticated: "Unauthenticated"
+    unauthorized: "Unauthorized"
+    not_found: "User not found!"
+    show:
+      home: "Home"
+      welcome: "Welcome"
+      my_account: "My account"
+      user_name: "User name"
+    edit:
+      edit_account: "Edit Your Profile"
+      save_changes: "Save changes"
+    update:
+      success: "Update profile successfully"
+  shared:
+    error_messages:
+      the_form_contains: "The form contains"
+      error: "error"
+    profile_sidebar:
+      profile: "Profile"
+      address: "Addresses"
+      order: "My Orders"
+      manage_account: "Manage My Account"
