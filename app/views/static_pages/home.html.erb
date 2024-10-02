@@ -1,4 +1,60 @@
-<div>
-  <h1 class="font-bold text-4xl">StaticPages#home</h1>
-  <p>Find me in app/views/static_pages/home.html.erb</p>
+<div class="bg-white">
+  <main class="my-8">
+    <div class="container mx-auto px-6">
+      <div class="h-64 rounded-md overflow-hidden bg-cover bg-center" style="background-image: url('https://www.thebanner.org/sites/default/files/styles/article_detail_header/public/TunedIn_BooksfromtheBanner_large.jpg?itok=BLGbYjSU')">
+        <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+          <div class="px-10 max-w-xl">
+            <h2 class="text-2xl text-white font-semibold">B-World</h2>
+            <p class="mt-2 text-gray-200">Chào mừng bạn đến với trang web bán sách trực tuyến, nơi bạn có thể khám phá và mua những cuốn sách yêu thích của mình với giá cả hợp lý.</p>
+            <button class="flex items-center mt-4 px-3 py-2 bg-primary text-white text-sm uppercase font-medium rounded hover:bg-primary_hover focus:outline-none focus:bg-bg-primary_hover">
+              <span><%= t(".see_now") %></span>
+              <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="md:flex mt-8 md:-mx-4">
+        <div class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2" style="background-image: url('https://www.popoptiq.com/wp-content/uploads/2019/01/shutterstock_232417714-min.jpg')">
+          <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+            <div class="px-10 max-w-xl">
+              <h2 class="text-2xl text-white font-semibold">Thể loại</h2>
+              <p class="mt-2 text-gray-200">Khám phá danh mục sách phong phú với nhiều thể loại từ tiểu thuyết, khoa học, tự truyện đến sách thiếu nhi, giúp bạn tìm kiếm những tác phẩm phù hợp nhất.</p>
+              <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+                <span><%= t(".see_now") %></span>
+                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="w-full h-64 mt-8 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:mt-0 md:w-1/2" style="background-image: url('https://www.shutterstock.com/image-photo/stack-books-against-background-library-600nw-2459213053.jpg')">
+          <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+            <div class="px-10 max-w-xl">
+              <h2 class="text-2xl text-white font-semibold">Sách</h2>
+              <p class="mt-2 text-gray-200">Tìm hiểu về từng cuốn sách với thông tin chi tiết, đánh giá của độc giả và những gợi ý hấp dẫn, giúp bạn chọn lựa một cách dễ dàng.</p>
+              <button class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
+                <span><%= t(".see_now") %></span>
+                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16">
+        <div class="flex justify-between items-center">
+          <h3 class="text-gray-600 text-2xl font-medium"><%= t(".title_list1") %></h3>
+          <button id="see-more" class="flex items-center mt-4 text-primary text-sm uppercase font-medium rounded hover:underline focus:outline-none" onclick="window.location='<%= products_path %>'"> 
+            <span><%= t(".see_more") %></span>
+            <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+          <% @products.each do |product| %>
+            <%= render partial: 'products/product', locals: { product: product } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>

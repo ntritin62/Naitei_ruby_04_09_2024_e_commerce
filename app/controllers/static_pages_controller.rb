@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
-  def home; end
+  def home
+    @products = Product.order(rating: :desc).limit(Settings.index_size)
+  end
 
   def help; end
 
