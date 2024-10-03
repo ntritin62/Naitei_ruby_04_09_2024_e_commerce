@@ -7,7 +7,7 @@
       <%= f.email_field :email%>
     </div>
     <div class="flex flex-col w-full">
-      <%= f.label t(".password"), class: "text-lg font-bold" %>
+      <%= f.label t ".password", class: "text-lg font-bold" %>
       <%= f.password_field :password, class: "form-control" %>
     </div>
     <div class="flex flex-col w-full">
@@ -20,7 +20,8 @@
       <%= t ".login" %>
     </button>
   <% end %>
-  <p>
+<p class="mt-4">
     <%= t ".new_user?" %>
+    <%= link_to t(".sign_up_now"), new_user_path, class: "text-primary font-bold hover:underline" %>
   </p>
 </div>

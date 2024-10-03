@@ -64,6 +64,7 @@ vi:
       password: "Mật Khẩu"
       remember_me: "Duy trì đăng nhập trên thiết bị này"
       forgot_password: "Quên mật khẩu?"
+      sign_up_now: "Đăng ký ngay"
     create:
       successful: "Đăng nhập thành công!"
       invalid: "Email hoặc mật khẩu không chính xác"
@@ -87,6 +88,23 @@ vi:
       password_confirm: "Mật khẩu xác nhận"
     update:
       success: "Cập nhật thông tin thành công"
+    new:
+      sign_up: "Đăng ký"
+      user_name: "Tên đăng nhập"
+      password: "Mật khẩu"
+      password_conf: "Xác nhận mật khẩu"
+      have_acc: "Bạn đã có tài khoản?"
+      pls_login: "Đăng nhập"
+    welcome: "Chào mừng bạn đến với B-World!"
+    signup_failed: "Đăng ký không thành công. Vui lòng kiểm tra lại thông tin."
+  search:
+    index:
+      result: "Kết quả tìm kiếm cho: "
+      categories: "Danh mục"
+      products: "Sách"
+      cate_not_fond: "Không tìm thấy danh mục nào."
+      pro_not_fond: "Không tìm thấy sách nào"
+    enter: "Vui lòng nhập giá trị tìm kiếm."
   shared:
     error_messages:
       the_form_contains: "Biểu mẫu này có"

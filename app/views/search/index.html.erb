@@ -1,0 +1,33 @@
+<h1 class="text-3xl font-bold mb-4">
+  <%= t ".result" %><span class="text-2xl font-bold"><%= @query %></span>
+</h1>
+<div class="bg-white items-center justify-between w-full flex rounded-full shadow-lg p-2 mb-5 sticky" style="top: 5px">
+  <div class="flex-grow">
+    <div class="lg:text-2xl md:text-xl text-lg lg:p-3 p-1 font-black text-gray-700">
+      <%= t ".categories" %>
+    </div>
+  </div>
+</div>
+<% if @categories.any? %>
+  <div class="flex flex-col gap-4 lg:p-4 p-2 rounded-lg m-2">
+    <%= render @categories %>
+  </div>
+<% else %>
+  <p class="text-gray-500"><%= t ".cate_not_fond" %></p>
+<% end %>
+<div class="bg-white items-center justify-between w-full flex rounded-full shadow-lg p-2 mb-5 sticky" style="top: 5px">
+  <div class="flex-grow">
+    <div class="lg:text-2xl md:text-xl text-lg lg:p-3 p-1 font-black text-gray-700">
+      <%= t ".products" %>
+    </div>
+  </div>
+</div>
+<% if @products.any? %>
+  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <%= render @products %>
+  </ul>
+<% else %>
+  <p class="text-gray-500"><%= t ".pro_not_fond" %></p>
+<% end %>
+<div class="mt-8">
+</div>
