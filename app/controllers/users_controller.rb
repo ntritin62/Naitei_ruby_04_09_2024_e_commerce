@@ -39,13 +39,6 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def correct_user
-    return if current_user? @user
-
-    flash[:danger] = t ".unauthorized"
-    redirect_to current_user, status: :see_other
-  end
-
   def admin_user
     redirect_to root_url, status: :see_other unless current_user.admin?
   end

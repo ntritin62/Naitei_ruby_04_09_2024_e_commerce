@@ -1,3 +1,4 @@
+@import './_pagy.scss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

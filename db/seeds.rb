@@ -5,6 +5,22 @@ User.create! user_name: "tin",
              activated: true,
              activated_at: Time.zone.now
 
+User.create! user_name: "tin",
+             email: "tin123@gmail.com",
+             password: "12345678",
+             password_confirmation: "12345678",
+             activated: true,
+             activated_at: Time.zone.now
+
+20.times do
+  Address.create!(
+    user: User.first!,
+    receiver_name: Faker::Name.name,
+    place: Faker::Address.full_address,
+    phone: Faker::Number.number(digits: 10)
+  )
+end
+
 fiction = Category.create!(name: "Fiction")
 non_fiction = Category.create!(name: "Non-Fiction")
 fantasy = Category.create!(name: "Fantasy")

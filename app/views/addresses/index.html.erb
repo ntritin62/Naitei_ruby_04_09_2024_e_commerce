@@ -1,0 +1,26 @@
+<%= render "shared/profile_breadcrumb" %>
+<div class="grid grid-cols-12">
+  <div class="col-span-3">
+    <%= render "shared/profile_sidebar" %>
+  </div>
+  <div class="col-span-9 px-[50px] py-[20px] bg-white rounded-lg drop-shadow-lg">
+    <div class="flex justify-between">
+      <h2 class="text-primary font-bold text-xl mb-3"><%= t ".address" %></h2>
+      <%= link_to new_user_address_path(@user), class: "px-4 py-2 bg-primary text-white rounded hover:opacity-70" do %>
+        <i class="fa-solid fa-plus"></i>
+        <span class="ml-2"><%= t ".add_new_address" %></span>
+      <% end %>
+    </div>
+    <h2 class="text-primary font-bold text-base text-center mb-3"><%= t ".default_address" %></h2>
+    <% if @default_address.present? %>
+      <%= render @default_address %>
+    <% else %>
+      <p class="text-stone-500 mb-5 text-center"><%= t ".no_default_address" %></p>
+    <% end %>
+    <h2 class="text-primary font-bold text-base text-center mb-3"><%= t ".address" %></h2>
+    <ul>
+      <%= render @addresses %>
+    </ul>
+    <%== pagy_nav @pagy %>
+  </div>
+</div>

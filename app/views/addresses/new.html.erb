@@ -1,0 +1,15 @@
+<%= render "shared/profile_breadcrumb" %>
+<div class="grid grid-cols-12">
+  <div class="col-span-3">
+    <%= render "shared/profile_sidebar" %>
+  </div>
+  <div class="col-span-9 px-[50px] py-[20px] bg-white rounded-lg drop-shadow-lg">
+    <div class="flex gap-2 items-center mb-3">
+      <%= link_to user_addresses_path do %>
+        <i class="fa-solid fa-arrow-left text-primary text-xl"></i>
+      <% end %>
+      <h2 class="text-primary font-bold text-xl"><%= t ".new_address" %></h2>
+    </div>
+    <%= render "form" %>
+  </div>
+</div>

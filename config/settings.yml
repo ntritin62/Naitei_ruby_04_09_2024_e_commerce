@@ -6,8 +6,7 @@ value:
   max_category_name: 255
   max_receiver_name: 300
   valid_email: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  phone: 10
-  phone_format: /\A\d{10}\z/
+  phone_format: !ruby/regexp /\A\d{10}\z/
   comment_length: 1000
   min_numeric: 0
   rate_min: 1
@@ -16,5 +15,6 @@ ui:
   avatar_size: 150
   default_avatar_size: 80
   img_accept_format: "image/jpeg,image/gif,image/png"
+  address_limit: 3
 index_size: 4
 page_size: 8
