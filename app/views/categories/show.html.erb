@@ -1,0 +1,24 @@
+<div class="w-full">
+  <div class="flex flex-wrap items-start">
+    <div class="w-full md:w-8/12 lg:w-6/12 px-6 mb-6">
+      <div class="relative flex flex-col bg-primary shadow-lg rounded-lg">
+        <img alt="..." src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=80" class="w-full rounded-t-lg">
+        <blockquote class="relative p-8 mb-4">
+        <h4 class="text-xl font-bold text-white">
+          <%= t ".categories_name", cate_name: @category.name %>
+        </h4>
+        <p class="text-md font-light mt-2 text-white">
+          <%= t ".quantity_pro_count", count: @product_count %>
+        </p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="w-1/12 md:w-4/12 lg:w-6/12 px-6 mb-6">
+    <div class="grid gap-6 grid-cols-2">
+      <%= render partial: "products/product", collection: @products %>
+    </div>
+    <nav class="mt-6 flex justify-center">
+      <%= render "pagy/pagy_nav", pagy: @pagy %>
+    </nav>
+  </div>
+</div>

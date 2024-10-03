@@ -42,6 +42,15 @@ en:
   pagy:
     previous: "Previous"
     next: "Next"
+  categories:
+    category:
+      product: "products"
+    index:
+      categories: "Categories"
+    show:
+      categories_name: "Categories: %{cate_name}"
+      quantity_pro_count: "Quantity: %{count} products"
+      not_found: "Category not found."
   sessions:
     new:
       login: "Login"

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   include Pagy::Backend
   def index
-    @pagy, @products = pagy(Product.all, items: Settings.page_size)
+    @pagy, @products = pagy(Product.all, limit: Settings.page_size)
     @product_count = Product.count
   end
 
