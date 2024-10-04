@@ -3,14 +3,14 @@ module UsersHelper
     size = options[:size]
     gravatar_id = Digest::MD5.hexdigest user.email.downcase
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag gravatar_url, alt: user.user_name, class: "rounded-full"
+    image_tag gravatar_url, alt: user.user_name, class: options[:class]
   end
 
   def user_avatar user, options = {class: ""}
     if user.avatar.attached?
       image_tag(user.avatar.variant(:display), class: options[:class])
     else
-      gravatar_for(user)
+      gravatar_for(user, options)
     end
   end
 end

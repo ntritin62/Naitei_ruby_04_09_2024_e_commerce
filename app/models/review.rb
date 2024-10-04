@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
+  REVIEW_REQUIRE_ATTRIBUTES = %i(rating comment).freeze
   belongs_to :product
   belongs_to :user
 
