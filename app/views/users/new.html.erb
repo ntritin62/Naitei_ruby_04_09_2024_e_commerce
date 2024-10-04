@@ -1,4 +1,21 @@
-<div>
-  <h1 class="font-bold text-4xl">Users#new</h1>
-  <p>Find me in app/views/users/new.html.erb</p>
+<% provide :title, t(".sign_up") %>
+<div class="bg-grey-lighter min-h-screen flex flex-col">
+  <div class="container max-w-screen-md mx-auto flex-1 flex flex-col items-center justify-center px-2">
+    <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+      <h1 class="mb-8 text-3xl text-center"><%= t ".sign_up" %></h1>
+      <%= form_for @user, url: users_path, html: { class: "flex flex-col" } do |f| %>
+        <%= f.text_field :user_name, class: "block border border-grey-light w-full p-3 rounded mb-4", placeholder: t(".user_name") %>
+        <%= f.email_field :email, class: "block border border-grey-light w-full p-3 rounded mb-4", placeholder: "Email" %>
+        <%= f.password_field :password, class: "block border border-grey-light w-full p-3 rounded mb-4", placeholder: t(".password") %>
+        <%= f.password_field :password_confirmation, class: "block border border-grey-light w-full p-3 rounded mb-4", placeholder: t(".password_conf") %>
+        <button type="submit" class="w-full text-center py-3 rounded bg-primary text-white hover:bg-primary_hover focus:outline-none my-1">
+          <%= t ".sign_up" %>
+        </button>
+      <% end %>
+    </div>
+    <div class="text-grey-dark mt-6">
+      <%= t ".have_acc" %>
+      <a class="no-underline border-b border-blue text-blue" href="<%= login_path %>"><%= t ".pls_login" %></a>.
+    </div>
+  </div>
 </div>

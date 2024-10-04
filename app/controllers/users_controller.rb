@@ -8,9 +8,22 @@ class UsersController < ApplicationController
 
   def index; end
 
-  def new; end
+  def new
+    @user = User.new
+  end
 
-  def create; end
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      log_in @user
+      show_registration_success_msg
+      redirect_to root_path
+    else
+      show_registration_fail_msg
+      render :new, status: :unprocessable_entity
+    end
+  end
 
   def edit; end
 
@@ -41,5 +54,13 @@ class UsersController < ApplicationController
 
   def admin_user
     redirect_to root_url, status: :see_other unless current_user.admin?
+  end
+
+  def show_registration_success_msg
+    flash[:success] = t ".welcome"
+  end
+
+  def show_registration_fail_msg
+    flash.now[:danger] = @user.errors.full_messages.join(", ")
   end
 end

@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     get "/categories/index"
     get "/categories/show"
 
+    get "/signup", to: "users#new"
+    post "/signup", to: "users#create"
+    
+    get "/search", to: "search#index"
+
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"

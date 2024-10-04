@@ -61,6 +61,7 @@ en:
       password: "Mật khẩu"
       remember_me: "Remember me on this device"
       forgot_password: "Forgot password?"
+      sign_up_now: "Sign up now"
     create:
       successful: "Log in successful!"
       invalid: "Incorrect email or password!"
@@ -79,6 +80,23 @@ en:
       save_changes: "Save changes"
     update:
       success: "Update profile successfully"
+    new:
+      sign_up: "Sign up"
+      user_name: "User name"
+      password: "Password"
+      password_conf: "Confirm password"
+      have_acc: "Already have an account?"
+      pls_login: "Log in"
+    welcome: "Welcome to B-World!"
+    signup_failed: "Registration failed. Please check the information again."
+  search:
+    index:
+      result: "Search results for: "
+      categories: "Category"
+      products: "Products"
+      cate_not_fond: "No categories found."
+      pro_not_fond: "No products found."
+    enter: "Please enter search value."
   shared:
     error_messages:
       the_form_contains: "The form contains"
