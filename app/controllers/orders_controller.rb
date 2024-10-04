@@ -2,8 +2,9 @@ class OrdersController < ApplicationController
   before_action :set_cart_items, only: [:new, :create]
   before_action :set_order, only: [:show]
   before_action :set_user, :correct_user, :logged_in_user,
-                only: %i(order_details index)
+                only: %i(order_details index cancel)
   before_action :set_order_details, only: %i(order_details)
+  before_action :set_order_cancel, only: %i(cancel)
 
   def new
     @order = Order.new
@@ -37,6 +38,22 @@ class OrdersController < ApplicationController
   end
 
   def show; end
+
+  def cancel
+    cancel_reason = params.dig(:order, :cancel_reason)
+    if @order.pending?
+      if cancel_reason.present? && @order.update(cancel_reason:,
+                                                 status: "cancelled")
+        update_cart_items @order
+        flash[:success] = t ".order_canceled"
+      else
+        flash[:danger] = t ".cancel_failed"
+      end
+    else
+      flash[:danger] = t ".cannot_cancel_order"
+    end
+    redirect_to user_order_order_details_path(@user, @order)
+  end
 
   private
   def set_cart_items
@@ -97,5 +114,41 @@ class OrdersController < ApplicationController
 
     flash[:danger] = t ".not_found_order"
     redirect_to root_path
+  end
+
+  def set_order_cancel
+    @order = @user.orders
+                  .includes(:address, order_items: :product)
+                  .find_by(id: params[:id])
+    return @order_items = @order.order_items.includes(:product) if @order
+
+    flash[:danger] = t ".not_found_order"
+    redirect_to root_path
+  end
+
+  def update_cart_items order
+    cart = current_user.cart || current_user.create_cart
+    order.order_items.each do |order_item|
+      cart_item = cart.cart_items.find_by(product_id: order_item.product_id)
+
+      if cart_item
+        increment_cart_item_quantity(cart_item, order_item)
+      else
+        create_new_cart_item(cart, order_item)
+      end
+      @product = Product.find order_item.product_id
+      @product.increment! :stock, order_item.quantity
+    end
+  end
+
+  def increment_cart_item_quantity cart_item, order_item
+    cart_item.quantity += order_item.quantity
+    cart_item.save
+  end
+
+  def create_new_cart_item cart, order_item
+    cart.cart_items.create!(
+      product_id: order_item.product_id, quantity: order_item.quantity
+    )
   end
 end

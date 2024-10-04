@@ -36,10 +36,10 @@
                     <i class="fa-solid fa-user"></i>
                     <%= t(".profile") %>
                   <% end %>
-                  <p class="cursor-pointer">
+                  <%= link_to user_orders_path(current_user), class: "flex items-center gap-2" do %>
                     <i class="fa-solid fa-bag-shopping"></i>
-                    <%= link_to t(".order") %>
-                  </p>
+                    <p><%= t ".order" %></p>
+                  <% end %>
                   <div class="w-full h-[1px] bg-primary" ></div>
                   <p class="text-red-600 cursor-pointer">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -56,4 +56,3 @@
     </div>
   </div>
 </header>
-

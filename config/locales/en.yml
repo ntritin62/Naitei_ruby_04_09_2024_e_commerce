@@ -242,7 +242,16 @@ en:
       price: "Price"
       quantity: "Quantity"
       temporary_total: "Temporary Total"
+      reason_for_cancellation: "Reason For Cancellation"
+      cancel_order: "Cancel order"
     order_item:
       review: "Write a review"
     order:
       order_id: "Order ID"
+      more_items: "more items"
+    cancel:
+      reason_for_cancellation: "Reason For Cancellation"
+      cancel: "Submit"
+      order_canceled: "Order has been canceled successfully."
+      cancel_failed: "Failed to cancel the order. The cancellation reason cannot be blank."
+      cannot_cancel_order: "You cannot cancel this order."

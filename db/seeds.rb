@@ -206,9 +206,9 @@ Product.create!([
     user: User.first!,
     address: Address.where(user: User.first).sample,
     payment_method: ["Credit Card", "PayPal", "Cash on Delivery"].sample,
-    status: Order.statuses.keys.sample,
+    status: 0,
     total: Faker::Commerce.price(range: 100000..500000),
-    cancel_reason: [nil, "Out of stock", "Customer request"].sample
+    cancel_reason: nil
   )
 
   3.times do
