@@ -60,7 +60,6 @@ class CartsController < ApplicationController
   end
 
   def remove_item
-    product_increment_quantity(@cart_item.quantity)
     @cart_item.destroy
     flash.now[:success] = t "carts.item_removed_success"
     calculate_total
@@ -110,7 +109,6 @@ class CartsController < ApplicationController
         quantity: @quantity
       )
       if @cart_item.save
-        product_decrement_quantity(@quantity)
         flash.now[:success] = t "carts.item_added_success"
       else
         flash.now[:danger] = t "carts.item_added_error"
@@ -123,19 +121,10 @@ class CartsController < ApplicationController
     if new_quantity > @product.stock + @cart_item.quantity
       flash.now[:error] = t "carts.insufficient_stock"
     elsif @cart_item.update(quantity: new_quantity)
-      product_decrement_quantity(@quantity)
       flash.now[:success] = t "carts.item_added_success"
     else
       flash.now[:danger] = t "carts.item_added_error"
     end
-  end
-
-  def product_decrement_quantity quantity
-    @product.decrement! :stock, quantity
-  end
-
-  def product_increment_quantity quantity
-    @product.increment! :stock, quantity
   end
 
   def can_increment_item?
@@ -144,8 +133,6 @@ class CartsController < ApplicationController
 
   def increment_cart_item
     @cart_item.quantity += 1
-    product_decrement_quantity 1
-
     if @cart_item.save
       flash.now[:success] = t "carts.item_increment_success"
     else
@@ -159,8 +146,6 @@ class CartsController < ApplicationController
 
   def decrement_cart_item
     @cart_item.quantity -= 1
-    product_increment_quantity 1
-
     if @cart_item.save
       flash.now[:success] = t "carts.item_decrement_success"
     else
@@ -169,7 +154,6 @@ class CartsController < ApplicationController
   end
 
   def remove_cart_item
-    product_increment_quantity 1
     @cart_item.destroy
     flash.now[:success] = t "carts.item_removed_success"
   end

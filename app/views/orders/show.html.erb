@@ -8,7 +8,6 @@
     <h3 class="md:text-2xl text-base text-gray-900 font-semibold"><%= t ".order_success" %></h3>
   </div>
 </div>
-
 <div class="py-5">
   <details class="group border rounded-md shadow-md bg-gray-50">
     <summary class="flex justify-between items-center p-4 font-medium cursor-pointer list-none bg-gray-200 hover:bg-gray-300 transition duration-200">
@@ -30,10 +29,8 @@
       <% end %>
       <h4 class="text-lg font-semibold mt-4"><%= t ".payment_method_title" %>:</h4>
       <p class="text-gray-700 pl-4"><%= t("orders.payment_method.#{@order.payment_method}") %></p>
-
       <h4 class="text-lg font-semibold mt-4"><%= t ".order_status" %>:</h4>
       <p class="text-gray-700 pl-4"><%= @order.status == "pending" ? t(".pending") : "" %></p>
-
       <h4 class="text-lg font-semibold mt-4"><%= t ".product_details" %>:</h4>
       <ul class="divide-y divide-gray-300 pl-4">
         <% @order.order_items.each do |item| %>
@@ -43,7 +40,6 @@
           </li>
         <% end %>
       </ul>
-
       <div class="mt-4">
         <div class="flex justify-between font-semibold text-gray-900">
           <span class="text-lg font-semibold mt-4"><%= t ".shipping_fee" %>:</span>
@@ -57,7 +53,6 @@
     </div>
   </details>
 </div>
-
 <div class="text-center mt-6">
   <a href="/" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-green-500 transition duration-200">
     <%= t ".back_to_home" %>

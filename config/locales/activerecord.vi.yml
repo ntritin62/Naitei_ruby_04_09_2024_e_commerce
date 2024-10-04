@@ -44,6 +44,13 @@ vi:
         status: "Trạng thái"
         total: "Tổng tiền"
         cancel_reason: "Lý do hủy"
+        statuses:
+          pending: "Đang chờ"
+          confirmed: "Đã xác nhận"
+          preparing: "Đang chuẩn bị"
+          delivering: "Đang giao"
+          delivered: "Đã giao"
+          cancelled: "Đã hủy"
       order_item:
         product: "Sản phẩm"
         order: "Đơn hàng"

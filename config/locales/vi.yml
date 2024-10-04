@@ -242,3 +242,31 @@ vi:
     payment_method:
       cash_on_delivery: "Thanh toán khi nhận hàng"
       credit_card: "Thanh toán qua thẻ tín dụng"
+    unauthenticated: "Vui lòng đăng nhập"
+    unauthorized: "Bạn không có quyền truy cập vào trang này"
+    not_found: "Không tìm thấy người dùng!"
+    not_found_order: "Không tìm thấy đơn hàng!"
+    index:
+      my_orders: "Đơn hàng của tôi"
+    order_details:
+      receiver_address: "ĐỊA CHỈ NGƯỜI NHẬN"
+      delivery_method: "HÌNH THỨC GIAO HÀNG"
+      payment_method: "HÌNH THỨC THANH TOÁN"
+      subtotal: "Tạm tính"
+      shipping_fee: "Phí vận chuyển"
+      total: "Tổng cộng"
+      fast_delivery: "FAST Giao Tiết Kiệm"
+      free_shipping: "Miễn phí vận chuyển"
+      cod: "Thanh toán tiền mặt khi nhận hàng"
+      products: "Sản phẩm"
+      price: "Giá"
+      quantity: "Số lượng"
+      temporary_total: "Tạm tính"
+      order_number: "Chi tiết đơn hàng"
+      address: "Địa chỉ"
+      phone: "Số điện thoại"
+    order_item:
+      review: "Viết nhận xét"
+    order:
+      order_id: "Mã đơn hàng"
+    
