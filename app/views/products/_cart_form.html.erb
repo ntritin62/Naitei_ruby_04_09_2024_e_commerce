@@ -1,0 +1,19 @@
+<%= form_with url: add_item_carts_path, method: :post, id: "quantity-input" do |form| %>
+  <div id="quantity-input" class="flex items-center space-x-4" data-controller="quantity">
+    <button type="button"
+            class="flex items-center justify-center w-8 h-8 border border-gray-300 rounded-full hover:bg-gray-200 focus:outline-none"
+            data-action="click->quantity#decrement" id="decrement-button">
+      <span class="text-lg">-</span>
+    </button>
+    <%= form.text_field :quantity, value: 1, min: 1, class: "text-lg w-16 text-center border border-gray-300 rounded", data: { quantity_target: 'quantityField' }, readonly: true %>
+    <button type="button"
+            class="flex items-center justify-center w-8 h-8 border border-gray-300 rounded-full hover:bg-gray-200 focus:outline-none"
+            data-action="click->quantity#increment" id="increment-button">
+      <span class="text-lg">+</span>
+    </button>
+  </div>
+  <div class="flex gap-10 w-full mt-10">
+    <%= form.hidden_field :product_id, value: @product.id %>
+    <%= form.submit t(".add_to_cart"), class: 'bg-white border-solid border-[1px] border-primary w-1/2 h-[48px] hover:bg-primary hover:text-white text-primary font-bold py-2 px-4' %>
+  </div>
+<% end %>

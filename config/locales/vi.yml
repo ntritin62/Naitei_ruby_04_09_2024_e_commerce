@@ -39,6 +39,11 @@ vi:
       book: "cuốn sách"
     show:
       not_found: "Sản phẩm không tìm thấy."
+    index:
+      title: "Danh sách tất cả sản phẩm "
+      book: "cuốn sách"
+    cart_form:
+      add_to_cart: "Thêm vào giỏ hàng"
   pagy:
     previous: "Trước"
     next: "Sau"
@@ -126,3 +131,26 @@ vi:
     destroy:
       success: "Địa chỉ được xoá thành công."
       fail: "Xoá địa chỉ thất bại."
+  carts:
+    item_added_success: "Sản phẩm đã được thêm vào giỏ hàng"
+    item_added_error: "Không thể thêm sản phẩm vào giỏ hàng"
+    item_updated_success: "Sản phẩm đã được cập nhật trong giỏ hàng"
+    insufficient_stock: "Không đủ số lượng sản phẩm trong kho"
+    item_increment_success: "Tăng số lượng thành công"
+    item_decrement_success: "Giảm số lượng thành công"
+    item_removed_success: "Sản phẩm đã được xóa khỏi giỏ hàng"
+    cart_not_found: "Giỏ hàng không tồn tại"
+    cart_item_not_found: "Không tìm thấy sản phẩm trong giỏ hàng"
+    product_not_found: "Không tìm thấy sản phẩm"
+    show:
+      subtotal: "Tổng"
+      items: "sản phẩm"
+      price: "Giá"
+      free: "Miễn phí"
+      shipping: "Vận chuyển"
+      total: "Tổng cộng"
+    empty_cart:
+      empty_cart: "Không có sản phẩm trong giỏ hàng."
+    cart_item:
+      category: "Thể loại"
+      remove: "Xoá"

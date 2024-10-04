@@ -39,6 +39,8 @@ en:
       book: "books"
     show:
       not_found: "Product not found."
+    cart_form:
+      add_to_cart: "Add to cart"
   pagy:
     previous: "Previous"
     next: "Next"
@@ -121,3 +123,26 @@ en:
     destroy:
       success: "Address was successfully deleted."
       fail: "Deleted address failed."
+  carts:
+    item_added_success: "Item has been added to the cart"
+    item_added_error: "Unable to add item to the cart"
+    item_updated_success: "Item has been updated in the cart"
+    insufficient_stock: "Insufficient stock available"
+    item_increment_success: "Quantity incremented successfully"
+    item_decrement_success: "Quantity decremented successfully"
+    item_removed_success: "Item has been removed from the cart"
+    cart_not_found: "Cart not found"
+    cart_item_not_found: "Cart item not found"
+    product_not_found: "Product not found"
+    show:
+      subtotal: "Subtotal"
+      items: "items"
+      price: "Price"
+      free: "Free"
+      shipping: "Shipping"
+      total: "Total"
+    empty_cart:
+      empty_cart: "There are no products in the cart."
+    cart_item:
+      category: "Category"
+      remove: "Remove"
