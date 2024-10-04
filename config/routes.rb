@@ -26,5 +26,6 @@ Rails.application.routes.draw do
       end
     end
     resources :products, only: %i(show index)
+    resources :password_resets, only: %i(new create edit update)
   end
 end

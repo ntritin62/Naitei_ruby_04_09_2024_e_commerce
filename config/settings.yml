@@ -10,6 +10,7 @@ value:
   comment_length: 1000
   min_numeric: 0
   rate_min: 1
+  reset_expired_time: 2
   rate_max: 5
 ui:
   avatar_size: 150

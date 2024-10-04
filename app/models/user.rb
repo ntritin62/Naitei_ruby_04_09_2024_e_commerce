@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   SIGN_UP_REQUIRE_ATTRIBUTES = %i(user_name email password
 password_confirmation avatar).freeze
-  attr_accessor :remember_token
+  RESET_PARAMS = %i(password password_confirmation).freeze
+  attr_accessor :remember_token, :reset_token
 
   has_one_attached :avatar do |attachable|
     attachable.variant :display, resize_to_limit: [Settings.ui.avatar_size,
@@ -61,6 +62,20 @@ password_confirmation avatar).freeze
 
   def forget
     update_attribute :remember_digest, nil
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns reset_digest: User.digest(reset_token),
+                   reset_sent_at: Time.zone.now
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < Settings.value.reset_expired_time.hours.ago
   end
 
   private

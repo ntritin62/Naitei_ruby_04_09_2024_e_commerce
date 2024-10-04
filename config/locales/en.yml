@@ -146,3 +146,22 @@ en:
     cart_item:
       category: "Category"
       remove: "Remove"
+  password_resets:
+    invalid_email: "Invalid email"
+    new:
+      forgot_password: "Forgot password"
+      submit: "Submit"
+    create:
+      invalid_user: "Invalid user"
+      check_email: "Please check your email to reset password"
+    edit:
+      submit: "Submit"
+      password_reset: "Reset password"
+    update:
+      cannot_empty: "cannot empty"
+      reset_success: "Password reset successfully"
+  user_mailer:
+    password_reset:
+      password_reset: "Password reset"
+      greeting: "Hi %{user_name}"
+      instruction: "Click the link below to reset your password. The link will expire in %{expire_time} hour."

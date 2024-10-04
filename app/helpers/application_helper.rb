@@ -12,6 +12,8 @@ module ApplicationHelper
       "text-green-600 bg-green-200"
     when "danger"
       "text-red-600 bg-red-200"
+    when "info"
+      "text-blue-600 bg-blue-200"
     else
       "text-yellow-600 bg-yellow-200"
     end
