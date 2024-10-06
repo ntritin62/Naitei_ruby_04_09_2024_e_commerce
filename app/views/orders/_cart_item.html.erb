@@ -1,0 +1,25 @@
+<!-- app/views/orders/_cart_item.html.erb -->
+<div id="cart-item-<%= item.id %>" class="grid grid-cols-12 gap-3 py-4 border-b-primary border-b-solid border-b-[1px]">
+  <div class="col-span-3">
+    <figure class="h-[200px] rounded-lg overflow-hidden object-contain">
+      <%= image_tag item.product.img_url, alt: item.product.name, class: "h-full" %>
+    </figure>
+  </div>
+  <div class="col-span-6">
+    <h2 class="text-xl font-bold">
+      <%= link_to item.product.name, product_path(item.product), class: "hover:underline" %>
+    </h2>
+    <p class="flex gap-2 mt-2"><span class="text-primary"><%= t(".category") %>:</span> <%= item.product.category.name %></p>
+  </div>
+  <div class="col-span-3 flex flex-col justify-between gap-3 items-end border-l-[1px] border-l-solid border-l-primary">
+    <p class="text-base mt-2">
+    <%= t(".price", price: number_to_currency(item.product.price, unit: "", precision: 0)) %>
+    </p>
+    <p class="text-base mt-2">
+    <%= t(".quantity", quantity: item.quantity) %>
+    </p>
+    <p class="text-lg font-bold">
+    <%= t(".total_price", total_price: number_to_currency(item.product.price * item.quantity, unit: "", precision: 0)) %>
+    </p>
+  </div>
+</div>

@@ -17,4 +17,9 @@ class Address < ApplicationRecord
       user.addresses.update_all(default: false)
     end
   end
+
+  def full_address
+    I18n.t("address.full_address", receiver_name:, place:,
+phone:)
+  end
 end

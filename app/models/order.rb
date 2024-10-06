@@ -10,6 +10,8 @@ class Order < ApplicationRecord
     delivered: 4,
     cancelled: 5
   }
+  UPDATE_ORDER = %i(address_id total status cancel_reason
+payment_method).freeze
   validates :total, presence: true,
     numericality: {greater_than_or_equal_to: Settings.value.min_numeric}
   validates :status, presence: true
