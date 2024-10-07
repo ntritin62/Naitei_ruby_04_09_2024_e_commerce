@@ -33,4 +33,10 @@ module OrdersHelper
   def remaining_items_count order
     order.order_items.count - 3
   end
+
+  def order_status_options
+    Order.statuses.map do |status, _|
+      {label: t("admin.orders_admin.edit.statuses.#{status}"), value: status}
+    end
+  end
 end

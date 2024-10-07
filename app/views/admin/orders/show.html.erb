@@ -1,0 +1,53 @@
+<div class="h-full ml-14 mb-10 md:ml-64" style="padding-top: 110px;">
+  <h1 class="text-3xl font-bold mb-6 text-center"><%= t "admin.orders_admin.show.title", order_id: @order.id %></h1> 
+
+  <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-semibold mb-4 border-b pb-2"><%= t "admin.orders_admin.show.order_info" %></h2> 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <p class="font-medium mb-2"><strong><%= t "admin.orders_admin.show.receiver" %>:</strong> <%= @order.address.receiver_name %></p> 
+        <p class="font-medium mb-2"><strong><%= t "admin.orders_admin.show.address" %>:</strong> <%= @order.address.place %></p> 
+        <p class="font-medium mb-2"><strong><%= t "admin.orders_admin.show.phone" %>:</strong> <%= @order.address.phone %></p> 
+      </div>
+      <div>
+        <p class="font-medium mb-2"><strong><%= t "admin.orders_admin.show.payment_method" %>:</strong> <%= payment_method_label(@order.payment_method) %></p> 
+        <p class="font-medium mb-2">
+          <strong><%= t "admin.orders_admin.show.status" %>:</strong>
+          <span class="py-1 px-3 rounded-full text-xs <%= order_status_class(@order.status) %>">
+            <%= order_status_label(@order.status) %>
+          </span>
+        </p>
+        <p class="font-medium mb-2"><strong><%= t "admin.orders_admin.show.created_at" %>:</strong> <%= @order.created_at.strftime("%d-%m-%Y") %></p> 
+        <p class="font-medium mb-2"><strong><%= t "admin.orders_admin.show.total" %>:</strong> <%= number_to_currency(@order.total, unit: "", precision: 0) %> ₫</p> 
+      </div>
+    </div>
+
+    <% if @order.cancelled? %>
+      <div class="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+        <strong><%= t "admin.orders_admin.show.cancelled_reason" %></strong> <%= @order.cancel_reason %>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="text-xl font-semibold mb-4"><%= t "admin.orders_admin.show.products_in_order" %></h2> 
+  <table class="min-w-full bg-white border rounded-lg shadow-md overflow-hidden table-fixed">
+    <thead>
+      <tr class="bg-primary text-white uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left"><%= t "admin.orders_admin.show.image" %></th> 
+        <th class="py-3 px-6 text-left"><%= t "admin.orders_admin.show.product_name" %></th> 
+        <th class="py-3 px-6 text-left"><%= t "admin.orders_admin.show.category" %></th> 
+        <th class="py-3 px-6 text-center"><%= t "admin.orders_admin.show.quantity" %></th> 
+        <th class="py-3 px-6 text-right"><%= t "admin.orders_admin.show.price" %></th> 
+        <th class="py-3 px-6 text-right"><%= t "admin.orders_admin.show.total_price" %></th> 
+      </tr>
+    </thead>
+    <tbody class="text-gray-600 text-sm font-light">
+      <%= render partial: "product_item", collection: @order.order_items, as: :product_item %>
+    </tbody>
+  </table>
+
+  <div class="mt-6 flex justify-end space-x-4">
+    <%= link_to t("admin.orders_admin.show.edit"), edit_admin_order_path(@order), class: "bg-primary hover:bg-primary_hover text-white font-bold py-2 px-4 rounded-lg" %> 
+    <%= link_to t("admin.orders_admin.show.back"), admin_orders_path, class: "bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg" %> 
+  </div>
+</div>

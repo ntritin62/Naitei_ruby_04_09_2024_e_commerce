@@ -42,5 +42,10 @@ Rails.application.routes.draw do
     resources :products, only: %i(show index)
     resources :password_resets, only: %i(new create edit update)
     resources :orders, only: %i(new create show) 
+    namespace :admin do
+      get "dashboard", to: "dashboard#index", as: "dashboard"
+      resources :orders
+      resources :users 
+    end
   end
 end

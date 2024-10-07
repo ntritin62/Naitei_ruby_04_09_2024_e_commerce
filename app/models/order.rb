@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :address
   has_many :order_items, dependent: :destroy
+  has_many :products, through: :order_items
   enum status: {
     pending: 0,
     confirmed: 1,
@@ -10,8 +11,19 @@ class Order < ApplicationRecord
     delivered: 4,
     cancelled: 5
   }
+  scope :by_status, ->(status){where(status:) if status.present?}
+
+  scope :sorted, lambda {|sort_column, sort_direction|
+    valid_columns = %w(created_at total)
+    if valid_columns.include?(sort_column)
+      order("#{sort_column} #{sort_direction}")
+    else
+      order("created_at desc")
+    end
+  }
   UPDATE_ORDER = %i(address_id total status cancel_reason
 payment_method).freeze
+  UPDATE_ORDER_ADMIN = %i(status cancel_reason payment_method).freeze
   validates :total, presence: true,
     numericality: {greater_than_or_equal_to: Settings.value.min_numeric}
   validates :status, presence: true

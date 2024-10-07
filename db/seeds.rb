@@ -1,3 +1,11 @@
+User.create! user_name: "admin",
+             email: "admin@gmail.com",
+             password: "12345678",
+             password_confirmation: "12345678",
+             role: 1,
+             activated: true,
+             activated_at: Time.zone.now
+
 User.create! user_name: "tin",
              email: "tin@gmail.com",
              password: "12345678",
