@@ -178,4 +178,8 @@ class CartsController < ApplicationController
     cart_items_with_price = @cart.cart_items.includes(:product)
     @total = cart_items_with_price.sum("cart_items.quantity * products.price")
   end
+
+  def current_cart_items
+    @cart.cart_items.includes(product: :category)
+  end
 end

@@ -167,6 +167,7 @@ vi:
       free: "Miễn phí"
       shipping: "Vận chuyển"
       total: "Tổng cộng"
+      order: "Đặt hàng"
     empty_cart:
       empty_cart: "Không có sản phẩm trong giỏ hàng."
     cart_item:
@@ -196,3 +197,48 @@ vi:
       greeting: "Chào %{user_name}"
       instruction: "Nhấn vào đường dẫn bên dưới để đặt lại mật khẩu. Đường dẫn sẽ khả dụng trong vòng %{expire_time} giờ."
       reset: "Đặt lại mật khẩu"
+  address:
+    full_address: "Tên: %{receiver_name}, Địa chỉ: %{place}, Số điện thoại: %{phone}"
+  orders: 
+    order_fail: "Đặt hàng không thành công"
+    address: "Địa chỉ giao hàng"
+    ch_address: "Chọn địa chỉ"
+    pro_order: "Sản phẩm đã chọn"
+    new:
+      order: "Đặt hàng"
+      delivery_address: "Địa chỉ giao hàng"
+      choose_address: "Chọn địa chỉ"
+      cart_items: "Sản phẩm đã chọn"
+      category: "Loại sản phẩm"
+      shipping: "Vận chuyển: "
+      total: "Tổng: "
+      shipping_cost: "%{cost} ₫"
+      total_cost: "%{total} ₫"
+      place_order: "Đặt hàng"
+      payment_method: "Phương thức thanh toán"
+    cart_item:
+      price: "Giá: %{price} ₫"
+      quantity: "Số lượng: %{quantity}"
+      total_price: "Thành tiền: %{total_price} ₫"
+    show:
+      order_success: "Đặt hàng thành công"
+      order_details: "Chi tiết đơn hàng"
+      shipping_address: "Địa chỉ vận chuyển"
+      name: "Tên"
+      address: "Địa chỉ"
+      phone: "Số điện thoại"
+      no_shipping_info: "Không có thông tin địa chỉ giao hàng."
+      product_details: "Chi tiết đơn hàng"
+      quantity: "Số lượng"
+      shipping_fee: "Phí vận chuyển"
+      total: "Tổng"
+      back_to_home: "Trở về Trang chủ"
+      payment_method_title: "Phương thức thanh toán"
+      order_status: "Tình trạng đơn hàng"
+      pending: "Chờ xử lý"
+      payment_method:
+        cash_on_delivery: "Thanh toán khi nhận hàng"
+        credit_card: "Thanh toán qua thẻ tín dụng"
+    payment_method:
+      cash_on_delivery: "Thanh toán khi nhận hàng"
+      credit_card: "Thanh toán qua thẻ tín dụng"
