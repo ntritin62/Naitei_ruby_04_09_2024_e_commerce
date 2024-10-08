@@ -253,6 +253,7 @@ vi:
       delivery_method: "HÌNH THỨC GIAO HÀNG"
       payment_method: "HÌNH THỨC THANH TOÁN"
       subtotal: "Tạm tính"
+      order_number: "Chi tiết đơn hàng"
       shipping_fee: "Phí vận chuyển"
       total: "Tổng cộng"
       fast_delivery: "FAST Giao Tiết Kiệm"
@@ -265,8 +266,16 @@ vi:
       order_number: "Chi tiết đơn hàng"
       address: "Địa chỉ"
       phone: "Số điện thoại"
+      reason_for_cancellation: "Lý do huỷ"
+      cancel_order: "Huỷ đơn hàng"
     order_item:
       review: "Viết nhận xét"
     order:
       order_id: "Mã đơn hàng"
-    
+      more_items: "sản phẩm nữa"
+    cancel:
+      reason_for_cancellation: "Lý do huỷ"
+      cancel: "Xác nhận huỷ"
+      order_canceled: 'Đơn hàng đã huỷ thành công.'
+      cancel_failed: "Hủy đơn hàng không thành công. Lý do hủy không được để trống."
+      cannot_cancel_order: 'Bạn không thể hủy đơn hàng này.'

@@ -1,10 +1,19 @@
 <div class="p-6 bg-gray-50">
   <div class="text-xl font-semibold text-gray-800">
+    <%= link_to user_orders_path(@user) do %>
+      <i class="fa-solid fa-arrow-left"></i>
+    <% end %>
     <%= t ".order_number" %> #<%= @order.id %> - 
     <span class="<%= status_color(@order.status) %> px-5 py-1 rounded-full">
       <%= t "activerecord.attributes.order.statuses.#{@order.status}" %>
     </span>
   </div>
+  <% if @order.cancelled? && @order.cancel_reason.present? %>
+    <div class="text-xl flex gap-3 mt-3">
+      <strong class="text-primary"><%= t ".reason_for_cancellation" %>:</strong>
+      <p><%= @order.cancel_reason %></p>
+    </div>
+  <% end %>
   <div class="mt-4 grid grid-cols-3 gap-4">
     <div class="bg-white drop-shadow-lg p-3 rounded-lg">
       <div class="font-bold text-lg text-gray-900">
@@ -54,5 +63,16 @@
         <p class="text-red-500"><%= @order.total %> ₫</p>
       </div>
     </div>
+  </div>
+  <% if @order.pending? %>
+    <div data-controller="cancel" class="mt-4">
+      <button data-action="click->cancel#showForm" class="bg-red-500 text-xl font-semibold text-white px-5 py-1 rounded-xl">
+        <i class="fa-solid fa-xmark"></i>
+        <%= t ".cancel_order" %>
+      </button>
+      <div class="mt-5 hidden" data-cancel-target="form">
+        <%= render "cancel" %>
+      </div>
+    <% end %>
   </div>
 </div>

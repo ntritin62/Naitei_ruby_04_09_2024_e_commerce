@@ -12,5 +12,7 @@
       <%= link_to t(".address"), user_addresses_path(@user) %>
     </li>
   </ul>
-  <h2 class="font-bold"><%= t ".order" %></h2>
+  <%= link_to user_orders_path(current_user), class: "flex items-center gap-2" do %>
+    <h2 class="font-bold"><%= t ".order" %></h2>
+  <% end %>
 </aside>

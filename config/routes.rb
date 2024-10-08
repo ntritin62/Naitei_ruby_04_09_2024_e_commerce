@@ -20,6 +20,9 @@ Rails.application.routes.draw do
       resources :addresses, except: :show
       resources :orders, only: %i(index order_details) do
         get 'order_details', to: 'orders#order_details', as: :order_details
+        member do
+          patch :cancel
+        end
       end
     end
     resources :categories do
