@@ -1,0 +1,58 @@
+<div class="p-6 bg-gray-50">
+  <div class="text-xl font-semibold text-gray-800">
+    <%= t ".order_number" %> #<%= @order.id %> - 
+    <span class="<%= status_color(@order.status) %> px-5 py-1 rounded-full">
+      <%= t "activerecord.attributes.order.statuses.#{@order.status}" %>
+    </span>
+  </div>
+  <div class="mt-4 grid grid-cols-3 gap-4">
+    <div class="bg-white drop-shadow-lg p-3 rounded-lg">
+      <div class="font-bold text-lg text-gray-900">
+        <%= t ".receiver_address" %>
+      </div>
+      <p class="text-yellow-500 font-bold drop-shadow-lg"><%= @order.address.receiver_name.upcase %></p>
+      <p class="text-gray-700"><%= t ".address" %>: <%= @order.address.place %></p>
+      <p class="text-gray-700"><%= t ".phone" %>: <%= @order.address.phone %></p>
+    </div>
+    <div class="bg-white drop-shadow-lg p-3 rounded-lg">
+      <div class="font-bold text-lg text-gray-900">
+        <%= t ".delivery_method" %>
+      </div>
+      <p class="text-yellow-600 font-semibold">
+        <%= t ".fast_delivery" %>
+      </p>
+      <p class="text-gray-700"><%= t ".free_shipping" %></p>
+    </div>
+    <div class="bg-white drop-shadow-lg p-3 rounded-lg">
+      <div class="font-bold text-lg text-gray-900">
+        <%= t ".payment_method" %>
+      </div>
+      <p class="text-gray-700"><%= t ".cod" %></p>
+    </div>
+  </div>
+  <div class="mt-4 bg-white drop-shadow-lg p-5 rounded-lg pt-4">
+    <div>
+      <div class="grid grid-cols-12 justify-between items-center border-b border-gray-300 pb-2">
+        <p class="font-semibold text-gray-900 col-span-6"><%= t ".products" %></p>
+        <p class="font-semibold text-gray-900 col-span-2 text-center"><%= t ".price" %></p>
+        <p class="font-semibold text-gray-900 col-span-2 text-center"><%= t ".quantity" %></p>
+        <p class="font-semibold text-gray-900 col-span-2 text-right"><%= t ".temporary_total" %></p>
+      </div>
+      <%= render partial: "orders/order_item", collection: @order_items %>
+    </div>
+    <div class="mt-6 pt-4">
+      <div class="flex justify-between">
+        <p class="text-gray-800"><%= t ".subtotal" %></p>
+        <p class="text-gray-700"><%= @order.total %> ₫</p>
+      </div>
+      <div class="flex justify-between">
+        <p class="text-gray-800"><%= t ".shipping_fee" %></p>
+        <p class="text-gray-700">0 ₫</p>
+      </div>
+      <div class="flex justify-between font-bold text-lg">
+        <p class="text-gray-800"><%= t ".total" %></p>
+        <p class="text-red-500"><%= @order.total %> ₫</p>
+      </div>
+    </div>
+  </div>
+</div>

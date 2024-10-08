@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   before_action :set_cart_items, only: [:new, :create]
   before_action :set_order, only: [:show]
+  before_action :set_user, :correct_user, :logged_in_user,
+                only: %i(order_details index)
+  before_action :set_order_details, only: %i(order_details)
 
   def new
     @order = Order.new
@@ -22,10 +25,20 @@ class OrdersController < ApplicationController
     end
   end
 
+  def index
+    @pagy, @orders = pagy(
+      @user.orders.includes(:address, order_items: :product),
+      limit: Settings.ui.address_limit
+    )
+  end
+
+  def order_details
+    render "orders/_order_details"
+  end
+
   def show; end
 
   private
-
   def set_cart_items
     @cart_items = current_cart_items
   end
@@ -66,5 +79,23 @@ class OrdersController < ApplicationController
 
   def clear_cart
     current_user.cart.cart_items.destroy_all
+  end
+
+  def set_user
+    @user = User.find_by id: params[:user_id]
+    return if @user
+
+    flash[:danger] = t ".not_found"
+    redirect_to root_path
+  end
+
+  def set_order_details
+    @order = @user.orders
+                  .includes(:address, order_items: :product)
+                  .find_by(id: params[:order_id])
+    return @order_items = @order.order_items.includes(:product) if @order
+
+    flash[:danger] = t ".not_found_order"
+    redirect_to root_path
   end
 end

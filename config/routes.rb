@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     resources :users do
       resources :addresses, except: :show
+      resources :orders, only: %i(index order_details) do
+        get 'order_details', to: 'orders#order_details', as: :order_details
+      end
     end
     resources :categories do
       resources :products
