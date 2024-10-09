@@ -1,0 +1,23 @@
+<!-- app/views/layouts/admin.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <%= render "layouts/admin_header" %>
+    <div class="flex">
+      <%= render "layouts/sidebar" %> 
+      <div class="content flex-grow p-4 padding-top: 72px; padding-left: 64px;">
+        <%= render "layouts/flash" %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

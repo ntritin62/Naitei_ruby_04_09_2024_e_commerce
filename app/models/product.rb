@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   has_many :cart_item, dependent: :destroy
   has_many :order_item, dependent: :nullify
   has_many :reviews, dependent: :destroy
+  has_many :orders, through: :order_items
 
   scope :search_by_name, ->(query){where("name LIKE ?", "%#{query}%")}
 

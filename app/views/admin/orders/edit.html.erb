@@ -1,0 +1,71 @@
+<div class="h-full ml-14 mb-10 md:ml-64" style="padding-top: 110px;">
+  <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center">
+    <%= t("admin.orders_admin.edit.title", order_id: @order.id) %> 
+  </h1>
+
+  <%= form_with(model: [:admin, @order], local: true) do |f| %>
+    <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+      <h2 class="text-2xl font-semibold text-gray-700 mb-6 border-b pb-2">
+        <%= t("admin.orders_admin.edit.info_title") %> 
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <div class="mb-4">
+            <%= f.label "address[receiver_name]", t("admin.orders_admin.edit.receiver_name"), class: "font-medium mb-2" %> 
+            <%= f.text_field "address[receiver_name]", value: @order.address.receiver_name, class: "block mt-2 w-full border border-gray-300 rounded-lg px-3 py-2", disabled: @order.cancelled? %>
+          </div>
+          <div class="mb-4">
+            <%= f.label "address[place]", t("admin.orders_admin.edit.address"), class: "font-medium mb-2" %> 
+            <%= f.text_field "address[place]", value: @order.address.place, class: "block mt-2 w-full border border-gray-300 rounded-lg px-3 py-2", disabled: @order.cancelled? %>
+          </div>
+          <div class="mb-4">
+            <%= f.label "address[phone]", t("admin.orders_admin.edit.phone"), class: "font-medium mb-2" %> 
+            <%= f.text_field "address[phone]", value: @order.address.phone, class: "block mt-2 w-full border border-gray-300 rounded-lg px-3 py-2", disabled: @order.cancelled? %>
+          </div>
+        </div>
+        <div>
+          <div class="mb-6">
+            <%= f.label :payment_method, t("admin.orders_admin.edit.payment_method"), class: "font-medium text-gray-700" %> 
+            <%= f.select :payment_method, 
+                  options_for_select([ 
+                    [t("admin.orders_admin.edit.payment_methods.cash_on_delivery"), "cash_on_delivery"], 
+                    [t("admin.orders_admin.edit.payment_methods.credit_card"), "credit_card"]
+                  ], @order.payment_method),
+                  {}, 
+                  class: "block mt-2 w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-primary focus:border-primary", 
+                  disabled: @order.cancelled? %>
+          </div>
+          <div class="mb-6">
+            <%= f.label :status, t("admin.orders_admin.edit.status"), class: "font-medium text-gray-700" %>
+            <%= f.select :status, 
+                  options_for_select(order_status_options.map { |status| [status[:label], status[:value]] }, @order.status), 
+                  {}, 
+                  class: "block mt-2 w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-primary focus:border-primary", 
+                  id: "order-status", 
+                  disabled: @order.cancelled? %>
+          </div>
+          <p class="font-medium text-gray-700 mb-6"><strong><%= t "admin.orders_admin.edit.total" %>:</strong> <%= number_to_currency(@order.total, unit: "", precision: 0) %> ₫</p> 
+          <p class="font-medium text-gray-700"><strong><%= t "admin.orders_admin.edit.created_at" %>:</strong> <%= @order.created_at.strftime("%d-%m-%Y") %></p> 
+        </div>
+      </div>
+      <% if @order.cancelled? %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6 mt-3">
+          <strong><%= t "admin.orders_admin.edit.cancelled_reason" %>:</strong>
+          <p><%= @order.cancel_reason %></p>
+        </div>
+        <p class="text-red-600 mt-2"><%= t "admin.orders_admin.edit.cancelled_status" %></p> 
+      <% end %>
+      <div class="mt-6">
+        <div id="cancel-reason-form" class="mb-4 hidden mt-4">
+          <%= f.label :cancel_reason, t("admin.orders_admin.edit.cancel_reason"), class: "font-medium mb-2" %> 
+          <%= f.text_area :cancel_reason, class: "block mt-2 w-full border border-gray-300 rounded-lg px-3 py-2", disabled: @order.cancelled? %>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 flex justify-end space-x-4">
+      <%= link_to t("admin.orders_admin.edit.cancel"), admin_orders_path, class: "bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg shadow-md" %> 
+      <%= f.submit t("admin.orders_admin.edit.update"), class: "bg-primary hover:bg-primary_hover text-white font-bold py-3 px-6 rounded-lg shadow-md", disabled: @order.cancelled? %> 
+    </div>
+  <% end %>
+  <%= javascript_include_tag "order_status" %>
+</div>

@@ -1,0 +1,48 @@
+<tr class="border-b border-gray-200 hover:bg-gray-100">
+  <td class="py-3 px-6 text-left whitespace-nowrap">
+    <div class="flex items-center">
+      <span class="font-medium"><%= order.id %></span>
+    </div>
+  </td>
+
+  <td class="py-3 px-6 text-left">
+    <%= link_to order.user.user_name, admin_user_path(order.user), class: "text-blue-600 hover:underline" %>
+  </td>
+
+  <td class="py-3 px-6 text-left">
+    <% if order.address %>
+      <%= order.address.full_address %>
+    <% else %>
+      <span class="text-gray-400 italic">N/A</span>
+    <% end %>
+  </td>
+
+  <td class="py-3 px-6 text-left">
+    <%= payment_method_label(order.payment_method) %>
+  </td>
+
+  <td class="py-3 px-6 text-center">
+    <span class="py-1 px-3 rounded-full text-xs <%= order_status_class(order.status) %>">
+      <%= order_status_label(order.status) %>
+    </span>
+  </td>
+
+  <td class="py-3 px-6 text-right">
+    <%= "#{number_to_currency(order.total, unit: "", precision: 0)} ₫" %>
+  </td>
+
+  <td class="py-3 px-6 text-center">
+    <%= order.created_at.strftime("%d-%m-%Y") %>
+  </td>
+
+  <td class="py-3 px-6 text-center">
+    <div class="flex item-center justify-center">
+      <%= link_to admin_order_path(order), class: "w-4 mr-2 transform hover:text-blue-600 hover:scale-110" do %>
+        <i class="fa fa-eye text-blue-600"></i> 
+      <% end %>
+      <%= link_to edit_admin_order_path(order), class: "w-4 mr-2 transform hover:text-yellow-600 hover:scale-110" do %>
+        <i class="fa fa-edit text-yellow-600"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

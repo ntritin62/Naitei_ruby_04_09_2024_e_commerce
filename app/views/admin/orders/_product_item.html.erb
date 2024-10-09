@@ -1,0 +1,20 @@
+<tr class="border-b border-gray-200 hover:bg-gray-100">
+  <td class="py-3 px-6 text-left">
+    <%= image_tag(product_item.product.img_url, class: "w-20 h-20 object-cover") %>
+  </td>
+  <td class="py-3 px-6 text-left">
+    <%= product_item.product.name %>
+  </td>
+  <td class="py-3 px-6 text-left">
+    <%= product_item.product.category.name %>
+  </td>
+  <td class="py-3 px-6 text-center">
+    <%= product_item.quantity %>
+  </td>
+  <td class="py-3 px-6 text-right">
+    <%= number_to_currency(product_item.product.price, unit: "", precision: 0) %> ₫
+  </td>
+  <td class="py-3 px-6 text-right">
+    <%= number_to_currency(product_item.product.price * product_item.quantity, unit: "", precision: 0) %> ₫
+  </td>
+</tr>

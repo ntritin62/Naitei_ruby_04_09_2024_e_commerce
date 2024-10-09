@@ -1,0 +1,7 @@
+<div id="flash-messages-admin" class="ml-14 md:ml-64" style="padding-top: 110px;" >
+  <% flash.each do |message_type, message| %>
+    <div class="<%= message_class(message_type) %> p-4 rounded mb-4">
+      <%= message %>
+    </div>
+  <% end %>
+</div>

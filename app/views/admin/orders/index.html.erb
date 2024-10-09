@@ -1,0 +1,36 @@
+<div class="h-full ml-14 mb-10 md:ml-64" style="padding-top: 110px;">
+  <h1 class="text-3xl font-bold mb-6"><%= t "admin.orders_admin.index.title" %></h1>
+
+  <div class="mb-4 flex justify-between items-center">
+    <div>
+      <%= link_to t("admin.orders_admin.index.sort_by_id"), admin_orders_path(sort: "id", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "mr-4 text-primary hover:underline" %>
+      <%= link_to t("admin.orders_admin.index.sort_by_total"), admin_orders_path(sort: "total", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "mr-4 text-primary hover:underline" %>
+      <%= link_to t("admin.orders_admin.index.sort_by_created_at"), admin_orders_path(sort: "created_at", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "text-primary hover:underline" %>
+    </div>
+    <div>
+      <%= form_with url: admin_orders_path, method: :get, local: true, class: "inline-block" do %>
+        <%= select_tag :status, options_for_select(Order.statuses.keys.map { |status| [t("orders.status.#{status}"), status] }, params[:status]), class: "form-select" %>
+        <%= submit_tag t("admin.orders_admin.index.filter"), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
+      <% end %>
+    </div>
+  </div>
+
+  <table class="min-w-full bg-white border rounded-lg shadow-md overflow-hidden table-fixed">
+    <thead>
+      <tr class="bg-primary text-white uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left w-1/12"><%= t "admin.orders_admin.index.order_id" %></th> 
+        <th class="py-3 px-6 text-left w-1/12"><%= t "admin.orders_admin.index.user" %></th> 
+        <th class="py-3 px-6 text-left w-4/12"><%= t "admin.orders_admin.index.address" %></th> 
+        <th class="py-3 px-6 text-left w-2/12"><%= t "admin.orders_admin.index.payment_method" %></th> 
+        <th class="py-3 px-6 text-center w-1/12"><%= t "admin.orders_admin.index.status" %></th> 
+        <th class="py-3 px-6 text-right w-1/12"><%= t "admin.orders_admin.index.total" %></th> 
+        <th class="py-3 px-6 text-center w-1/12"><%= t "admin.orders_admin.index.created_at" %></th> 
+        <th class="py-3 px-6 text-center w-1/12"><%= t "admin.orders_admin.index.actions" %></th> 
+      </tr>
+    </thead>
+    <tbody class="text-gray-600 text-sm font-light">
+      <%= render partial: "admin/orders/order_item", collection: @orders, as: :order %>
+    </tbody>
+  </table>
+  <%= render "pagy/pagy_nav", pagy: @pagy %>
+</div>
