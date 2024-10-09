@@ -276,6 +276,20 @@ vi:
     cancel:
       reason_for_cancellation: "Lý do huỷ"
       cancel: "Xác nhận huỷ"
-      order_canceled: 'Đơn hàng đã huỷ thành công.'
+      order_canceled: "Đơn hàng đã huỷ thành công."
       cancel_failed: "Hủy đơn hàng không thành công. Lý do hủy không được để trống."
-      cannot_cancel_order: 'Bạn không thể hủy đơn hàng này.'
+      cannot_cancel_order: "Bạn không thể hủy đơn hàng này."
+  reviews:
+    delete_confirm: "Bạn chắc chưa?"
+    success: "Đánh giá đã được tạo thành công."
+    already_reviewed: "Bạn đã đánh giá sản phẩm này."
+    updated: "Đánh giá đã được cập nhật thành công."
+    destroyed: "Đánh giá đã được xoá thành công."
+    must_purchase: "Bạn phải mua sản phẩm này trước khi đánh giá."
+    must_be_delivered: "Đơn hàng phải được giao mới có thể để lại đánh giá."
+    product_not_exist: "Sản phẩm không tồn tại."
+    user_not_exist: "Người dùng không tồn tại"
+    order_not_exist: "Đơn hàng không tồn tại"
+    review_not_exist: "Đánh giá không tồn tại"
+    submit_review: "Gửi đánh giá"
+    star: "sao"

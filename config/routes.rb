@@ -23,17 +23,20 @@ Rails.application.routes.draw do
         member do
           patch :cancel
         end
+        resources :products, only: [] do
+          resources :reviews, only: %i(new create edit update destroy)
+        end
       end
     end
     resources :categories do
       resources :products
     end
     resources :carts, only: :show do
-      post 'add_item', on: :collection
+      post "add_item", on: :collection
       member do
-        post 'increment_item'
-        post 'decrement_item'
-        delete 'remove_item'
+        post "increment_item"
+        post "decrement_item"
+        delete "remove_item"
       end
     end
     resources :products, only: %i(show index)

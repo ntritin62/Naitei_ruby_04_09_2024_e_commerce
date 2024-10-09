@@ -1,0 +1,23 @@
+<%= form_with model: [current_user, @order, @product, @review], html: { class: "max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md" } do |f| %>
+  <%= f.hidden_field :redirect_to, value: params[:redirect_to] %>
+  <%= f.hidden_field :order_id, value: params[:order_id] %>
+  <div class="flex items-center gap-3 mb-3">
+    <%= image_tag @product.img_url, alt: @product.name, class: "w-16 h-16" %>
+    <h2 class="font-bold text-xl"><%= @product.name %></h2>
+  </div>
+  <div class="mb-4">
+    <%= render "shared/error_messages", object: @review %>
+    <div class="flex gap-2">
+      <%= f.label :rating, class: "block text-gray-700 font-bold mb-2" %>
+      <p class="text-gray-600 mb-2">(<%= t "reviews.star" %>)</p>
+    </div>
+    <%= f.select :rating, (1..5).map { |i| [i, i] }, { include_blank: true }, class: "block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400" %>
+  </div>
+  <div class="mb-4">
+    <%= f.label :comment, class: "block text-gray-700 font-bold mb-2" %>
+    <%= f.text_area :comment, class: "block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-400", rows: 5 %>
+  </div>
+  <button type="submit" class="bg-primary text-white font-bold py-2 px-4 rounded hover:opacity-70 transition duration-200">
+    <%= t "reviews.submit_review" %>
+  </button>
+<% end %>
