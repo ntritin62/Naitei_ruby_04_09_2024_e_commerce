@@ -6,12 +6,6 @@
         <%= image_tag "Logo.svg", alt: "Logo", class: "w-[60px] h-[25px]" %>
         <p class="w-[60px] text-xs text-primary pl-2 border-l-primary border-l-[1px] border-solid"><%= t "admin.header_admin.tagline" %></p> 
       <% end %>
-      <%= form_with method: :get, local: true, html: { class: "flex justify-center bg-[#F1F1F1] rounded-sm overflow-hidden" } do |form| %>
-        <%= form.text_field :query, placeholder: t("admin.header_admin.search_placeholder"), class: "border-none bg-inherit text-sm w-80 outline-none" %> 
-        <button type="submit" class="ml-4 px-4 py-2 bg-primary text-white rounded-sm hover:opacity-70 text-lg flex items-center">
-          <i class="fas fa-search w-5 h-5"></i>
-        </button>
-      <% end %>
       <nav class="text-sm text-[#7B7881] flex items-center gap-[20px]">
         <ul class="flex gap-[20px] list-none">
           <div class="text-primary flex gap-[15px] items-center">
