@@ -22,7 +22,7 @@ class Category < ApplicationRecord
     by_name(params[:name])
       .sorted(params[:sort], params[:direction])
   }
-  scope :with_product_count do
+  def self.with_product_count
     left_joins(:products)
       .select("categories.*, COUNT(products.id) AS products_count")
       .group("categories.id")

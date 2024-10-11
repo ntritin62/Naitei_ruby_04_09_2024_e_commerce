@@ -30,6 +30,7 @@ class Product < ApplicationRecord
              end
     order(column => direction)
   }
+  scope :highest_rated, ->{order(rating: :desc).first}
 
   def review_by_user user
     reviews.includes(:user).find_by(user_id: user.id)

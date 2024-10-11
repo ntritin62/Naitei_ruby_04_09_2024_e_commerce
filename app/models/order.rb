@@ -32,6 +32,7 @@ payment_method).freeze
       order("created_at desc")
     end
   }
+  scope :total_revenue, ->{where(status: "delivered").sum(:total)}
 
   scope :with_status, lambda {|status|
                         where(status:) if statuses.key?(status)

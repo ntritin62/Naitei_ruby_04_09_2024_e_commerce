@@ -7,45 +7,54 @@
         </div>
       </li>
       <li>
-        <%= link_to admin_dashboard_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6" do %>
-          <span class="inline-flex justify-center items-center ml-4">
-            <i class="fas fa-tachometer-alt"></i> 
-          </span>
-          <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.dashboard" %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_categories_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6" do %>
-          <span class="inline-flex justify-center items-center ml-4">
-            <i class="fas fa-list-alt"></i> 
-          </span>
-          <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.category" %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_products_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6" do %>
-          <span class="inline-flex justify-center items-center ml-4">
-            <i class="fas fa-box"></i> 
-          </span>
-          <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.product" %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_orders_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6" do %>
-          <span class="inline-flex justify-center items-center ml-4">
-            <i class="fas fa-shopping-cart"></i> 
-          </span>
-          <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.orders" %></span>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to admin_users_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 pr-6" do %>
-          <span class="inline-flex justify-center items-center ml-4">
-            <i class="fas fa-users"></i> 
-          </span>
-          <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.user" %></span>
-        <% end %>
-      </li>
+  <%= link_to admin_dashboard_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 #{active_class(admin_dashboard_path)} pr-6" do %>
+    <span class="inline-flex justify-center items-center ml-4">
+      <i class="fas fa-tachometer-alt"></i> 
+    </span>
+    <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.dashboard" %></span>
+  <% end %>
+</li>
+<li>
+  <%= link_to admin_categories_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 #{active_class(admin_categories_path)} pr-6" do %>
+    <span class="inline-flex justify-center items-center ml-4">
+      <i class="fas fa-list-alt"></i> 
+    </span>
+    <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.category" %></span>
+  <% end %>
+</li>
+<li>
+  <%= link_to admin_products_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 #{active_class(admin_products_path)} pr-6" do %>
+    <span class="inline-flex justify-center items-center ml-4">
+      <i class="fas fa-box"></i> 
+    </span>
+    <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.product" %></span>
+  <% end %>
+</li>
+<li>
+  <%= link_to admin_orders_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 #{active_class(admin_orders_path)} pr-6" do %>
+    <span class="inline-flex justify-center items-center ml-4">
+      <i class="fas fa-shopping-cart"></i> 
+    </span>
+    <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.orders" %></span>
+  <% end %>
+</li>
+<li>
+  <%= link_to admin_users_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 #{active_class(admin_users_path)} pr-6" do %>
+    <span class="inline-flex justify-center items-center ml-4">
+      <i class="fas fa-users"></i> 
+    </span>
+    <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.user" %></span>
+  <% end %>
+</li>
+<li>
+  <%= link_to admin_reviews_path, class: "relative flex flex-row items-center h-11 focus:outline-none hover:bg-primary_hover text-white-600 hover:text-white-800 border-l-4 #{active_class(admin_reviews_path)} pr-6" do %>
+    <span class="inline-flex justify-center items-center ml-4">
+      <i class="fas fa-star"></i> 
+    </span>
+    <span class="ml-2 text-sm tracking-wide truncate"><%= t "admin.sidebar.reviews" %></span>
+  <% end %>
+</li>
+
     </ul>
     <p class="mb-14 px-5 py-3 hidden md:block text-center text-xs"><%= t "admin.sidebar.copyright" %></p>
   </div>
