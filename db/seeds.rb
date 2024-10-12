@@ -22,7 +22,7 @@ User.create! user_name: "tin",
 
 20.times do
   Address.create!(
-    user: User.first!,
+    user: User.second,
     receiver_name: Faker::Name.name,
     place: Faker::Address.full_address,
     phone: Faker::Number.number(digits: 10)

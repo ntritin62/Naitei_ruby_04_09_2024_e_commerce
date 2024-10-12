@@ -603,3 +603,12 @@ en:
     highest_rated_product: "Highest Rated Product"
     top_user: "User with Most Orders"
     orders: "orders"
+  order:
+    updated: "Order #%{id} has been updated with status: %{status}"
+  notifications:
+    update_failed: "Failed to update notification"
+    user_not_found: "User not found"
+    notification_not_found: "Notification not found"
+    notification: "Notifications"
+    no_new_notifications: "No new notifications."
+    ago: "ago"
