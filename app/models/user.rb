@@ -32,14 +32,24 @@ password_confirmation avatar).freeze
             length: {minimum: Settings.value.min_user_password},
             allow_nil: true
 
+  scope :search_by_user_name, lambda {|query|
+                                if query.present?
+                                  where("user_name LIKE ?", "%#{query}%")
+                                end
+                              }
   scope :by_activation_status, lambda {|status|
                                  where(activated: status) if status.present?
                                }
   scope :sorted, lambda {|column, direction|
     order("#{column} #{direction}") if column.present?
   }
+  scope :by_role, lambda {|role|
+                    where(role:) if role.present?
+                  }
   scope :filtered_and_sorted, lambda {|params|
-    by_activation_status(params[:activated])
+    search_by_user_name(params[:user_name])
+      .by_activation_status(params[:activated])
+      .by_role(params[:role])
       .sorted(params[:sort], params[:direction])
   }
   def self.top_user

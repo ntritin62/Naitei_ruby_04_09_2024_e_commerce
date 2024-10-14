@@ -17,7 +17,7 @@ class Product < ApplicationRecord
                            less_than_or_equal_to: Settings.value.rate_max},
             allow_nil: true
 
-  scope :search_by_name, ->(query){where("name LIKE ?", "%#{query}%")}
+  scope :search_by_name, ->(query){where("products.name LIKE ?", "%#{query}%")}
   scope :by_category, lambda {|category_id|
                         where(category_id:) if category_id.present?
                       }

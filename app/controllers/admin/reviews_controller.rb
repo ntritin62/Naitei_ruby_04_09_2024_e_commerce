@@ -34,6 +34,7 @@ class Admin::ReviewsController < Admin::AdminController
   def search_reviews
     reviews = Review.all
     reviews = filter_reviews_by_type(reviews)
+    reviews = filter_reviews_by_rating(reviews)
     sort_reviews(reviews)
   end
 
@@ -45,6 +46,15 @@ class Admin::ReviewsController < Admin::AdminController
       reviews.by_user_username(query)
     elsif search_type == "product" && query.present?
       reviews.by_product_name(query)
+    else
+      reviews
+    end
+  end
+
+  def filter_reviews_by_rating reviews
+    rating = params[:rating]
+    if rating.present?
+      reviews.by_rating(rating)
     else
       reviews
     end

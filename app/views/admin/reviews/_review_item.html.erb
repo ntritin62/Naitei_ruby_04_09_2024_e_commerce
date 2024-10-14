@@ -16,6 +16,9 @@
   <td class="py-3 px-6 text-left">
     <%= review.comment %>
   </td>
+  <td class="py-3 px-6 text-left">
+    <%= review.created_at.strftime("%d-%m-%Y") %>
+  </td>
   <td class="py-3 px-6 text-center">
     <div class="flex items-center justify-center">
       <%= link_to admin_review_path(review), class: "w-4 mr-2 transform hover:text-blue-600 hover:scale-110" do %>

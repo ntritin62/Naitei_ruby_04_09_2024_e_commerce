@@ -20,7 +20,7 @@ class SearchController < ApplicationController
   end
 
   def perform_search
-    @categories = Category.search_by_name(@query)
+    @categories = Category.by_name(@query)
     @products = Product.search_by_name(@query)
   end
 end

@@ -5,8 +5,10 @@ class Admin::ProductsController < Admin::AdminController
   def index
     direction = (params[:direction]&.to_sym if %i(asc
 desc).include?(params[:direction]&.to_sym)) || :asc
-    @pagy, @products = pagy(Product.filtered(params).sorted(params[:sort],
-                                                            direction).distinct)
+    @pagy, @products = pagy(Product.filtered(params)
+                                   .search_by_name(params[:name])
+                                   .sorted(params[:sort], direction)
+                                   .distinct)
     @categories = Category.all.pluck(:name, :id)
   end
 

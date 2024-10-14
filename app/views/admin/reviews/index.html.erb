@@ -2,32 +2,63 @@
   <h1 class="text-3xl font-bold mb-6"><%= t "admin.reviews_admin.index.title" %></h1>
 
   <div class="flex justify-between mb-4">
-<div class="flex items-center">
-  <%= form_with url: admin_reviews_path, method: :get, local: true do %>
-    <select name="search_type" class="border rounded-lg py-2 px-4 mr-2" style="width: 250px;">
-      <option value="user" <%= "selected" if params[:search_type] == "user" %>><%= t "admin.reviews_admin.index.search_by_user" %></option>
-      <option value="product" <%= "selected" if params[:search_type] == "product" %>><%= t "admin.reviews_admin.index.search_by_product" %></option>
-    </select>
-    <input type="text" name="query" class="border rounded-lg py-2 px-4 mr-2" value="<%= params[:query] %>" />
-    <button type="submit" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary_hover"><%= t "admin.reviews_admin.index.search" %></button>
-  <% end %>
-</div>
+    <div class="flex items-center">
+      <%= form_with url: admin_reviews_path, method: :get, local: true do %>
+        <select name="search_type" class="border rounded-lg py-2 px-4 mr-2" style="width: 250px;">
+          <option value="user" <%= "selected" if params[:search_type] == "user" %>><%= t "admin.reviews_admin.index.search_by_user" %></option>
+          <option value="product" <%= "selected" if params[:search_type] == "product" %>><%= t "admin.reviews_admin.index.search_by_product" %></option>
+        </select>
+        <input type="text" name="query" class="border rounded-lg py-2 px-4 mr-2" value="<%= params[:query] %>" />
 
-    <div>
-      <%= link_to t("admin.reviews_admin.index.sort_by_rating"), admin_reviews_path(sort: "rating", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "mr-4 text-primary hover:underline" %>
-      <%= link_to t("admin.reviews_admin.index.sort_by_created_at"), admin_reviews_path(sort: "created_at", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "text-primary hover:underline" %>
+        <select name="rating" class="border rounded-lg py-2 px-4 mr-2" style="width: 150px;">
+          <option value=""><%= t "admin.reviews_admin.index.all_ratings" %></option>
+          <% (1..5).each do |star| %>
+            <option value="<%= star %>" <%= "selected" if params[:rating].to_i == star %>><%= star %> <%= t "admin.reviews_admin.index.star" %></option>
+          <% end %>
+        </select>
+
+        <button type="submit" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary_hover"><%= t "admin.reviews_admin.index.search" %></button>
+      <% end %>
     </div>
+    <%= link_to admin_reviews_path, class: "text-black hover:text-gray-400" do %>
+      <i class="fa fa-sync-alt"></i>
+    <% end %>
   </div>
 
   <table class="min-w-full bg-white border rounded-lg shadow-md overflow-hidden table-fixed">
     <thead>
       <tr class="bg-primary text-white uppercase text-sm leading-normal">
-        <th class="py-3 px-6 text-left w-1/12"><%= t "admin.reviews_admin.index.review_id" %></th>
-        <th class="py-3 px-6 text-left w-3/12"><%= t "admin.reviews_admin.index.product_name" %></th>
-        <th class="py-3 px-6 text-left w-3/12"><%= t "admin.reviews_admin.index.user_name" %></th>
-        <th class="py-3 px-6 text-left w-1/12"><%= t "admin.reviews_admin.index.rating" %></th>
-        <th class="py-3 px-6 text-left w-2/12"><%= t "admin.reviews_admin.index.comment" %></th>
-        <th class="py-3 px-6 text-center w-2/12"><%= t "admin.reviews_admin.index.actions" %></th>
+        <th class="py-3 px-6 text-left w-1/12 border-r border-gray-200">
+          <%= t "admin.reviews_admin.index.review_id" %>
+        </th>
+        <th class="py-3 px-6 text-left w-3/12 border-r border-gray-200">
+          <%= t "admin.reviews_admin.index.product_name" %>
+        </th>
+        <th class="py-3 px-6 text-left w-3/12 border-r border-gray-200">
+          <%= t "admin.reviews_admin.index.user_name" %>
+        </th>
+        <th class="py-3 px-6 text-left w-1/12 border-r border-gray-200">
+          <div class="flex justify-between items-center">
+            <span class="flex-grow"><%= t "admin.reviews_admin.index.rating" %></span>
+            <%= link_to admin_reviews_path(sort: "rating", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "text-white hover:text-gray-400 ml-2" do %>
+              <i class="fa fa-sort-alpha-<%= params[:direction] == 'asc' ? 'up' : 'down' %>"></i>
+            <% end %>
+          </div>
+        </th>
+        <th class="py-3 px-6 text-left w-2/12 border-r border-gray-200">
+          <%= t "admin.reviews_admin.index.comment" %>
+        </th>
+        <th class="py-3 px-6 text-left w-2/12 border-r border-gray-200">
+          <div class="flex justify-between items-center">
+            <span class="flex-grow"><%= t "admin.reviews_admin.index.created_at" %></span>
+            <%= link_to admin_reviews_path(sort: "created_at", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "text-white hover:text-gray-400 ml-2" do %>
+              <i class="fa fa-sort-alpha-<%= params[:direction] == 'asc' ? 'up' : 'down' %>"></i>
+            <% end %>
+          </div>
+        </th>
+        <th class="py-3 px-6 text-center w-2/12">
+          <%= t "admin.reviews_admin.index.actions" %>
+        </th>
       </tr>
     </thead>
     <tbody class="text-gray-600 text-sm font-light">

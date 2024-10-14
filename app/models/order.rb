@@ -22,6 +22,10 @@ payment_method).freeze
 
   scope :ordered_by_updated_at, ->{order(updated_at: :desc)}
 
+  scope :by_username, lambda {|user_name|
+    joins(:user).where(users: {user_name:}) if user_name.present?
+  }
+
   scope :by_status, ->(status){where(status:) if status.present?}
 
   scope :sorted, lambda {|sort_column, sort_direction|
