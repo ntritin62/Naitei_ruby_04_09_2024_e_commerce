@@ -6,7 +6,7 @@ module Admin::ApplicationHelper
 
   def active_class link_path
     if request.path == url_for(link_path)
-      "bg-primary_hover border-blue-500 font-bold text-lg"
+      "bg-primary_hover border-white font-bold text-lg"
     else
       "border-transparent"
     end

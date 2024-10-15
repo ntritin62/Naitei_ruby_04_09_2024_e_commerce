@@ -2,13 +2,21 @@
   <h1 class="text-3xl font-bold mb-6"><%= t "admin.users_admin.index.title" %></h1>
   
   <div class="mb-4 flex justify-between items-center">
-    <div>
-      <%= link_to t("admin.users_admin.index.sort_by_id"), admin_users_path(sort: "id", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "mr-4 text-primary hover:underline" %>
-      <%= link_to t("admin.users_admin.index.sort_by_user_name"), admin_users_path(sort: "user_name", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "mr-4 text-primary hover:underline" %>
+    <%= link_to admin_users_path, class: "text-black hover:text-gray-400" do %>
+      <i class="fa fa-sync-alt"></i>
+    <% end %>
+    <div class="flex-grow mx-4 flex justify-center">
+      <%= form_with url: admin_users_path, method: :get, local: true do %>
+        <%= text_field_tag :user_name, params[:user_name], placeholder: t("admin.users_admin.index.search_by_name"), class: "border rounded-lg py-2 px-4 mr-2" %>
+        <%= submit_tag t("admin.users_admin.index.search"), class: "bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary_hover" %>
+      <% end %>
     </div>
     <div>
       <%= form_with url: admin_users_path, method: :get, local: true, class: "inline-block" do %>
-        <%= select_tag :activated, options_for_select([["#{t("admin.users_admin.index.all")}", ""], ["#{t("admin.users_admin.index.activated")}", true], ["#{t("admin.users_admin.index.inactivated")}", false]], params[:activated]), class: "form-select" %>
+        <%= select_tag :activated, options_for_select([["#{t("admin.users_admin.index.all")}", ""], ["#{t("admin.users_admin.index.activated")}", true], ["#{t("admin.users_admin.index.inactivated")}", false]], params[:activated]), class: "form-select mr-2" %>
+        
+        <%= select_tag :role, options_for_select([["#{t("admin.users_admin.index.all_roles")}", ""]] + User.roles.keys.map { |role| [t("roles.#{role}"), role] }, params[:role]), class: "form-select mr-2" %>
+        
         <%= submit_tag t("admin.users_admin.index.filter"), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
       <% end %>
     </div>
@@ -17,12 +25,29 @@
   <table class="min-w-full bg-white border rounded-lg shadow-md overflow-hidden table-fixed">
     <thead>
       <tr class="bg-primary text-white uppercase text-sm leading-normal">
-        <th class="py-3 px-6 text-left w-1/12"><%= t "admin.users_admin.index.user_id" %></th>
-        <th class="py-3 px-6 text-left w-3/12"><%= t "admin.users_admin.index.user_name" %></th>
-        <th class="py-3 px-6 text-left w-3/12"><%= t "admin.users_admin.index.email" %></th>
-        <th class="py-3 px-6 text-left w-1/12"><%= t "admin.users_admin.index.role" %></th>
-        <th class="py-3 px-6 text-left w-1/12"><%= t "admin.users_admin.index.status" %></th>
-        <th class="py-3 px-6 text-center w-2/12"><%= t "admin.users_admin.index.actions" %></th>
+        <th class="py-3 px-6 text-left w-1/12 border-r border-gray-200">
+          <%= t "admin.users_admin.index.user_id" %>
+        </th>
+        <th class="py-3 px-6 text-left w-3/12 border-r border-gray-200">
+          <div class="flex justify-between items-center">
+            <span class="flex-grow"><%= t "admin.users_admin.index.user_name" %></span>
+            <%= link_to admin_users_path(sort: "name", direction: params[:direction] == "asc" ? "desc" : "asc"), class: "text-white hover:text-gray-400 ml-2" do %>
+              <i class="fa fa-sort-alpha-<%= params[:direction] == 'asc' ? 'up' : 'down' %>"></i>
+            <% end %>
+          </div>
+        </th>
+        <th class="py-3 px-6 text-left w-3/12 border-r border-gray-200">
+          <%= t "admin.users_admin.index.email" %>
+        </th>
+        <th class="py-3 px-6 text-left w-1/12 border-r border-gray-200">
+          <%= t "admin.users_admin.index.role" %>
+        </th>
+        <th class="py-3 px-6 text-left w-1/12 border-r border-gray-200">
+          <%= t "admin.users_admin.index.status" %>
+        </th>
+        <th class="py-3 px-6 text-center w-2/12">
+          <%= t "admin.users_admin.index.actions" %>
+        </th>
       </tr>
     </thead>
     <tbody class="text-gray-600 text-sm font-light">

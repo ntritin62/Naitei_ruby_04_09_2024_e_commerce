@@ -3,8 +3,11 @@ class Admin::OrdersController < Admin::AdminController
   before_action :find_order, only: %i(show edit update)
 
   def index
-    @pagy, @orders = pagy(filtered_orders.sorted(params[:sort],
-                                                 params[:direction]))
+    @pagy, @orders = pagy(
+      filtered_orders
+        .by_username(params[:user_name])
+        .sorted(params[:sort], params[:direction])
+    )
   end
 
   def show

@@ -9,8 +9,8 @@ class Category < ApplicationRecord
             length: {maximum: Settings.value.max_category_name}
 
   scope :by_name, lambda {|name|
-                    where("name LIKE ?", "%#{name}%") if name.present?
-                  }
+    where("categories.name LIKE ?", "%#{name}%") if name.present?
+  }
 
   scope :sorted, lambda {|sort_by, direction|
     column = %w(name created_at).include?(sort_by) ? sort_by : "created_at"

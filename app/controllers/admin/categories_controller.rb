@@ -3,8 +3,10 @@ class Admin::CategoriesController < Admin::AdminController
   before_action :find_category, only: %i(show edit update destroy)
 
   def index
-    @pagy, @categories = pagy(Category.with_product_count,
-                              limit: Settings.page_size)
+    @pagy, @categories = pagy(
+      Category.with_product_count.sort_by_params(params),
+      limit: Settings.page_size
+    )
   end
 
   def show

@@ -22,4 +22,7 @@ class Review < ApplicationRecord
   scope :sort_by_created_at, lambda {|direction = "asc"|
                                order(created_at: direction)
                              }
+  scope :by_rating, lambda {|rating|
+                      where(rating:)
+                    }
 end
