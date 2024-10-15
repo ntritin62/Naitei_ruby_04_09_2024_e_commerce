@@ -208,23 +208,3 @@ Product.create!([
     img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
   }
 ])
-
-5.times do
-  order = Order.create!(
-    user: User.first!,
-    address: Address.where(user: User.first).sample,
-    payment_method: ["Credit Card", "PayPal", "Cash on Delivery"].sample,
-    status: 0,
-    total: Faker::Commerce.price(range: 100000..500000),
-    cancel_reason: nil
-  )
-
-  3.times do
-    OrderItem.create!(
-      order: order,
-      product: Product.all.sample,
-      quantity: Faker::Number.between(from: 1, to: 5),
-      price: Faker::Commerce.price(range: 10000..100000)
-    )
-  end
-end

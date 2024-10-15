@@ -1,0 +1,23 @@
+<tr class="border-b border-gray-200 hover:bg-gray-100">
+  <td class="py-3 px-6 text-left whitespace-nowrap">
+    <div class="flex items-center">
+      <span class="font-medium"><%= index %></span>
+    </div>
+  </td>
+  <td class="py-3 px-6 text-left">
+    <% if user.activated? %>
+      <%= link_to user.user_name, admin_user_path(user), class: "text-blue-600 hover:underline" %>
+    <% else %>
+      <span class="text-gray-400"><%= user.user_name %></span>
+    <% end %>
+  </td>
+    <td class="py-3 px-6 text-left">
+    <%= user.email %>
+  </td>
+  <td class="py-3 px-6 text-left">
+    <%= user.role.present? ? t("admin.users_admin.index.roles.#{user.role}") : "" %>
+  </td>
+  <td class="py-3 px-6 text-left">
+    <%= user.activated? ? t("admin.users_admin.index.activated") : t("admin.users_admin.index.inactivated") %>
+  </td>
+</tr>

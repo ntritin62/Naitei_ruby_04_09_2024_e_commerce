@@ -1,0 +1,53 @@
+<div class="h-full ml-14 mb-10 md:ml-64" style="padding-top: 110px;">
+  <h1 class="text-3xl font-bold mb-6 text-center"><%= t "admin.reviews_admin.show.title", review_id: @review.id %></h1>
+
+  <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+    <h2 class="text-xl font-semibold mb-4 border-b pb-2"><%= t "admin.reviews_admin.show.review_info" %></h2>
+    <h3 class="text-lg font-semibold mb-2"><%= t "admin.reviews_admin.show.user_info" %></h3>
+    <div class="mb-6"> 
+      <table class="min-w-full bg-white border rounded-lg shadow-md overflow-hidden table-fixed">
+        <thead>
+          <tr class="bg-primary text-white uppercase text-sm leading-normal">
+            <th class="py-3 px-6 text-left w-1/12"><%= t "admin.users_admin.index.user_id" %></th>
+            <th class="py-3 px-6 text-left w-4/12"><%= t "admin.users_admin.index.user_name" %></th>
+            <th class="py-3 px-6 text-left w-4/12"><%= t "admin.users_admin.index.email" %></th>
+            <th class="py-3 px-6 text-left w-2/12"><%= t "admin.users_admin.index.role" %></th>
+            <th class="py-3 px-6 text-left w-1/12"><%= t "admin.users_admin.index.status" %></th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 text-sm font-light">
+          <% @reviews.each_with_index do |review, index| %>
+            <%= render partial: "admin/reviews/user_item", locals: { user: review.user, index: index + 1 } %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="text-lg font-semibold mb-2"><%= t "admin.reviews_admin.show.product_info" %></h3>
+    <div class="mb-6">
+      <table class="min-w-full bg-white border rounded-lg shadow-md overflow-hidden table-fixed">
+        <thead>
+          <tr class="bg-primary text-white uppercase text-sm leading-normal">
+            <th class="py-3 px-6 text-left w-1/12"><%= t "admin.products_admin.index.product_id" %></th> 
+            <th class="py-3 px-6 text-left w-4/12"><%= t "admin.products_admin.index.name" %></th> 
+            <th class="py-3 px-6 text-left w-4/12"><%= t "admin.products_admin.index.category" %></th> 
+            <th class="py-3 px-6 text-left w-2/12"><%= t "admin.products_admin.index.price" %></th> 
+            <th class="py-3 px-6 text-left w-1/12"><%= t "admin.products_admin.index.create_at" %></th> 
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 text-sm font-light">
+          <% @reviews.each_with_index do |review, index| %>
+            <%= render partial: "admin/reviews/product_item", locals: { product: review.product, index: index + 1 } %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="font-medium mb-2"><strong><%= t "admin.reviews_admin.show.rating" %>:</strong> <%= @review.rating %> <i class="fas fa-star text-yellow-500"></i></p>
+    <p class="font-medium mb-2" style="min-height: 4.5rem;"><strong><%= t "admin.reviews_admin.show.comment" %>:</strong> <%= @review.comment %></p>
+    <p class="font-medium mb-2"><strong><%= t "admin.reviews_admin.show.created_at" %>:</strong> <%= @review.created_at.strftime("%d-%m-%Y") %></p>
+  </div>
+
+  <div class="mt-6 flex justify-end space-x-4">
+    <%= link_to t("admin.reviews_admin.show.back"), admin_reviews_path, class: "bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg" %>
+  </div>
+</div>

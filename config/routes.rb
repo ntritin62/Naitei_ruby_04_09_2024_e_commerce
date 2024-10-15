@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       end
       resources :products
       resources :categories
+      resources :reviews
     end
   end
 end

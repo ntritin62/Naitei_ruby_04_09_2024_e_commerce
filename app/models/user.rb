@@ -42,6 +42,12 @@ password_confirmation avatar).freeze
     by_activation_status(params[:activated])
       .sorted(params[:sort], params[:direction])
   }
+  def self.top_user
+    joins(:orders)
+      .group("users.id")
+      .order("COUNT(orders.id) DESC")
+      .first
+  end
 
   has_secure_password
 
