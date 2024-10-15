@@ -144,6 +144,7 @@ en:
       success: "Address was successfully deleted."
       fail: "Deleted address failed."
   carts:
+    unauthenticated: "Unauthenticated"
     item_added_success: "Item has been added to the cart"
     item_added_error: "Unable to add item to the cart"
     item_updated_success: "Item has been updated in the cart"
@@ -300,6 +301,7 @@ en:
     submit_review: "Submit Review"
     star: "stars"
   admin:
+    access_denied: "You do not have permission to access this page."
     orders_admin:
       update:
         success: "Order updated successfully"
@@ -412,7 +414,7 @@ en:
         name: "Product Name"
         price: "Price"
         stock: "Stock"
-        img_url: "Image URL"
+        image: "Image"
         description: "Description"
         category: "Category"
         select_category: "Select Category"
@@ -434,7 +436,7 @@ en:
         price: "Price"
         stock: "Stock"
         category: "Category"
-        img_url: "Image URL"
+        image: "Image"
         rating: "Rating"
         cancel: "Cancel"
         update: "Update"

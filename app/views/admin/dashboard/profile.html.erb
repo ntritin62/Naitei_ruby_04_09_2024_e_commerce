@@ -1,0 +1,15 @@
+<div class="h-full ml-14 mb-10 md:ml-64" style="padding-top: 110px;">
+  <% content_for :title, t("admin.header_admin.profile") %>
+
+  <div class="container mx-auto my-8">
+    <h1 class="text-2xl font-bold mb-4"><%= t("admin.header_admin.profile") %></h1>
+
+    <div class="bg-white p-4 rounded-lg shadow">
+      <h2 class="text-xl font-semibold mb-2"><%= t("admin.header_admin.user_info") %></h2>
+      <p><strong><%= t("admin.header_admin.username") %>: </strong><%= current_user.user_name %></p>
+      <p><strong><%= t("admin.header_admin.email") %>: </strong><%= current_user.email %></p>
+      <p><strong><%= t("admin.header_admin.role") %>: </strong><%= current_user.role.humanize %></p>
+
+    </div>
+  </div>
+</div>

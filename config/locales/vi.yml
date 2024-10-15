@@ -154,6 +154,7 @@ vi:
       success: "Địa chỉ được xoá thành công."
       fail: "Xoá địa chỉ thất bại."
   carts:
+    unauthenticated: "Vui lòng đăng nhập"
     item_added_success: "Sản phẩm đã được thêm vào giỏ hàng"
     item_added_error: "Không thể thêm sản phẩm vào giỏ hàng"
     item_updated_success: "Sản phẩm đã được cập nhật trong giỏ hàng"
@@ -326,6 +327,7 @@ vi:
     submit_review: "Gửi đánh giá"
     star: "sao"
   admin:
+    access_denied: "Bạn không có quyền truy cập vào trang này."
     orders_admin:
       update:
         success: "Cập nhật đơn hàng thành công"
@@ -402,6 +404,11 @@ vi:
       profile: "Hồ sơ"
       log_out: "Đăng xuất"
       log_out_confirm: "Bạn có chắc chắn muốn đăng xuất?"
+      profile: "Hồ Sơ"
+      user_info: "Thông Tin Người Dùng"
+      username: "Tên Người Dùng"
+      email: "Email"
+      role: "Vai Trò"
     sidebar:
       main: "Chính"
       dashboard: "Bảng điều khiển"
@@ -443,7 +450,7 @@ vi:
         name: "Tên sản phẩm"
         price: "Giá"
         stock: "Tồn kho"
-        img_url: "Đường dẫn hình ảnh"
+        image: "Hình ảnh"
         description: "Mô tả"
         category: "Danh mục"
         select_category: "Chọn danh mục"
@@ -465,7 +472,7 @@ vi:
         price: "Giá"
         stock: "Tồn kho"
         category: "Danh mục"
-        img_url: "Đường dẫn hình ảnh"
+        image: "Hình ảnh"
         rating: "Đánh giá"
         cancel: "Hủy bỏ"
         update: "Cập nhật"

@@ -15,10 +15,10 @@
           <%= form.label :stock, t("admin.products_admin.form.stock"), class: "block text-sm font-medium text-gray-700" %>
           <%= form.number_field :stock, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
         </div>
-        <div>
-          <%= form.label :img_url, t("admin.products_admin.form.img_url"), class: "block text-sm font-medium text-gray-700" %>
-          <%= form.text_field :img_url, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
-        </div>
+<div>
+  <%= form.label :image, t("admin.products_admin.form.image"), class: "block text-sm font-medium text-gray-700" %>
+  <%= form.file_field :image, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
+</div>
         <div class="md:col-span-2">
           <%= form.label :desc, t("admin.products_admin.form.description"), class: "block text-sm font-medium text-gray-700" %>
           <%= form.text_area :desc, rows: 5, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>

@@ -1,7 +1,7 @@
 <div id="cart-item-<%= cart_item.id %>" class="grid grid-cols-12 gap-3 py-4 border-b-primary border-b-solid border-b-[1px]">
   <div class="col-span-3">
     <figure class="h-[200px] rounded-lg overflow-hidden object-contain">
-      <%= image_tag cart_item.product.img_url, alt: cart_item.product.name, class: "h-full" %>
+      <%= image_tag cart_item.product.image, alt: cart_item.product.name, class: "h-full" %>
     </figure>
   </div>
   <div class="col-span-6">

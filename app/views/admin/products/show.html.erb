@@ -13,7 +13,9 @@
         <p class="font-medium mb-2"><strong><%= t "admin.products_admin.show.category" %>:</strong> <%= @product.category.name if @product.category %></p>
       </div>
       <div>
-        <img src="<%= product_image(@product) %>" alt="<%= @product.name %>" class="w-full h-auto rounded-lg shadow-md" />
+        <% if @product.image.attached? %>
+          <%= image_tag @product.image, class: "rounded-md shadow-sm" %>
+        <% end %>
       </div>
     </div>
   </div>

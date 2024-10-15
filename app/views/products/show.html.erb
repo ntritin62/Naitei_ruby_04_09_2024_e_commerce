@@ -2,7 +2,7 @@
 <div class="container mx-auto">
   <div class="grid grid-cols-12 gap-10">
     <div class="col-span-4">
-      <%= image_tag @product.img_url, alt: @product.name, class: "w-full h-96 object-cover rounded-lg" %>
+      <%= image_tag @product.image, alt: @product.name, class: "w-full h-96 object-cover rounded-lg" %>
     </div>
     <div class="col-span-8">
       <h2 class="text-3xl font-bold"><%= @product.name %></h2>
@@ -10,7 +10,7 @@
         <%= render "rating", rating: @product.rating %>
         <span class="text-gray-700 ml-2"><%= @product.rating %></span>
       </div>
-      <p class="text-xl mt-5 font-semibold">$<%= @product.price %></p>
+      <p class="text-xl mt-5 font-semibold"><%= "#{number_to_currency(@product.price, unit: '', precision: 0)} ₫" %></p>
       <p class="text-gray-700 mt-5"><%= @product.desc %></p>
       <div class="mt-10">
         <%= render "cart_form" %>
