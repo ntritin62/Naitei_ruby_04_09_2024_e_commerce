@@ -30,6 +30,11 @@ Rails.application.routes.draw do
           get :status, action: :index
         end
       end
+      resources :notifications, only: [] do
+        member do
+          patch :mark_as_read
+        end
+      end
     end
     resources :categories do
       resources :products

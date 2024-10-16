@@ -20,6 +20,9 @@ payment_method).freeze
   validates :status, presence: true
   validates :cancel_reason, presence: true, if: ->{cancelled?}
 
+  after_update :send_order_notification
+  after_create :send_order_notification
+
   scope :ordered_by_updated_at, ->{order(updated_at: :desc)}
 
   scope :by_username, lambda {|user_name|
@@ -41,4 +44,14 @@ payment_method).freeze
   scope :with_status, lambda {|status|
                         where(status:) if statuses.key?(status)
                       }
+
+  def send_order_notification
+    Notification.create!(
+      user:,
+      order: self,
+      message: "order.updated",
+      read: false,
+      status:
+    )
+  end
 end

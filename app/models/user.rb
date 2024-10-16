@@ -13,6 +13,7 @@ password_confirmation avatar).freeze
   has_one :cart, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   enum role: {customer: 0, admin: 1}
 

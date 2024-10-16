@@ -1,0 +1,11 @@
+<div class="overflow-hidden bg-white shadow-md rounded-lg py-3">
+  <h2 class="text-lg font-semibold mb-4 ml-3"><%= t "notifications.notification" %></h2>
+  <div class="space-y-3 overflow-scroll-y max-h-[500px]">
+    <% notifications = current_user.notifications.recent.unread %>
+    <% if notifications.empty? %>
+      <p class="text-gray-500 text-center"><%= t "notifications.no_new_notifications" %></p>
+    <% else %>
+      <%= render partial: 'notifications/notification', collection: notifications %>
+    <% end %>
+  </div>
+</div>

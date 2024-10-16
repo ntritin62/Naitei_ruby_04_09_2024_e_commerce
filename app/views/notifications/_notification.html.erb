@@ -1,0 +1,7 @@
+<%= button_to mark_as_read_user_notification_path(notification.user, notification), method: :patch, class: "flex justify-start items-center mb-2 cursor-pointer hover:bg-slate-200 px-2 py-1" do %>
+  <div class="w-2 h-2 bg-primary rounded-full mr-2"></div>
+  <div class="text-start">
+    <p class="font-medium text-black"><%= t notification.message, id: notification.order.id, status: t("activerecord.attributes.order.statuses.#{notification.status}") %></p>
+    <span class="text-gray-500 text-sm"><%= time_ago_in_words(notification.created_at) %> <%= t "notifications.ago" %></span>
+  </div>
+<% end %>

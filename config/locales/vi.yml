@@ -120,6 +120,8 @@ vi:
       welcome: "Chào mừng"
       my_account: "Tài khoản của tôi"
       user_name: "Tên người dùng"
+    breadcrumb:
+      home: "Trang chủ"
   addresses:
     unauthenticated: "Vui lòng đăng nhập"
     unauthorized: "Bạn không có quyền truy cập vào trang này"
@@ -633,3 +635,12 @@ vi:
     highest_rated_product: "Sản phẩm có rating cao nhất"
     top_user: "Người dùng có nhiều đơn hàng nhất"
     orders: "đơn hàng"
+  order:
+    updated: "Đơn hàng #%{id} đã được cập nhật trạng thái: %{status}"
+  notifications:
+    update_failed: "Cập nhật thông báo thất bại"
+    user_not_found: "Không tìm thấy người dùng"
+    notification_not_found: "Không tìm thấy thông báo"
+    notification: "Thông báo"
+    no_new_notifications: "Không có thông báo nào mới."
+    ago: "trước"
