@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   def create
     @review = @product.reviews.build(review_params)
     @review.user = current_user
+    @review.order = @order
     if @review.save
       @product.update_average_rating
       flash[:success] = t "reviews.success"
@@ -77,7 +78,10 @@ class ReviewsController < ApplicationController
   end
 
   def check_review
-    return if @product.review_by_user(current_user).nil?
+    existing_review = @product.reviews.find_by(user_id: current_user.id,
+                                               order_id: @order.id)
+
+    return if existing_review.blank?
 
     flash[:danger] = t "reviews.already_reviewed"
     redirect_to root_path

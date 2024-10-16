@@ -27,9 +27,7 @@ class AddressesController < ApplicationController
   def edit; end
 
   def update
-    if params.dig(:address, :default) == "1" && @address.changed?
-      Address.set_default_false(@user)
-    end
+    Address.set_default_false(@user) if params.dig(:address, :default) == "1"
     if @address.update address_params
       flash[:success] = t ".success"
       redirect_to user_addresses_path

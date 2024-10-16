@@ -154,6 +154,7 @@ class CartsController < ApplicationController
   end
 
   def remove_cart_item
+    @cart_item.quantity = 0
     @cart_item.destroy
     flash.now[:success] = t "carts.item_removed_success"
   end
