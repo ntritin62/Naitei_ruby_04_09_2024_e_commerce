@@ -19,7 +19,7 @@ module OrdersHelper
   end
 
   def first_product_image order
-    order.order_items.limit(1).first&.product&.img_url
+    order.order_items.limit(1).first&.product&.image
   end
 
   def remaining_images_count order

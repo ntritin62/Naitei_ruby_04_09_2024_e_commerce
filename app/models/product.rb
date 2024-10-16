@@ -1,11 +1,12 @@
 class Product < ApplicationRecord
   PRODUCT_ADMIN_ATTRIBUTES = [:name, :desc, :price, :stock,
-:category_id, :img_url].freeze
+:category_id, :image].freeze
   belongs_to :category
   has_many :cart_item, dependent: :destroy
   has_many :order_item, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :orders, through: :order_items
+  has_one_attached :image
 
   validates :name, presence: true
   validates :price, presence: true,

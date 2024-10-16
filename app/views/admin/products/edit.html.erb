@@ -27,10 +27,10 @@
             <%= f.label :category_id, t("admin.products_admin.edit.category"), class: "font-medium mb-2" %>
             <%= f.collection_select :category_id, Category.all, :id, :name, class: "block mt-2 w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-primary focus:border-primary" %>
           </div>
-          <div class="mb-4">
-            <%= f.label :img_url, t("admin.products_admin.edit.img_url"), class: "font-medium mb-2" %>
-            <%= f.text_field :img_url, class: "block mt-2 w-full border border-gray-300 rounded-lg px-3 py-2" %>
-          </div>
+<div class="mb-4">
+  <%= f.label :image, t("admin.products_admin.edit.image"), class: "font-medium mb-2" %>
+  <%= f.file_field :image, class: "block mt-2 w-full border border-gray-300 rounded-lg px-3 py-2" %>
+</div>
           <div class="mb-4">
             <%= f.label :rating, t("admin.products_admin.edit.rating"), class: "font-medium mb-2" %>
             <%= f.text_field :rating, value: @product.rating, class: "block mt-2 w-full border border-gray-300 rounded-lg px-3 py-2", disabled: true %>

@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     resources :password_resets, only: %i(new create edit update)
     resources :orders, only: %i(new create show) 
     namespace :admin do
+      get "profile", to: "dashboard#profile", as: "profile"
       get "dashboard", to: "dashboard#index", as: "dashboard"
       resources :orders
       resources :users do

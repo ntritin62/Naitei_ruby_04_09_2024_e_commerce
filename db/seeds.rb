@@ -35,15 +35,23 @@ fantasy = Category.create!(name: "Fantasy")
 mystery = Category.create!(name: "Mystery")
 science_fiction = Category.create!(name: "Science Fiction")
 
-Product.create!([
+require "open-uri"
+
+fiction = Category.find_or_create_by!(name: "Fiction")
+non_fiction = Category.find_or_create_by!(name: "Non-fiction")
+fantasy = Category.find_or_create_by!(name: "Fantasy")
+mystery = Category.find_or_create_by!(name: "Mystery")
+science_fiction = Category.find_or_create_by!(name: "Science Fiction")
+
+products = [
   {
     name: "Cuộc sống kỳ diệu của A. J. Fikry",
     desc: "Một tiểu thuyết về tình yêu, gia đình và sức mạnh của sách.",
     price: 100000,
     stock: 50,
     rating: 4.2,
-    category_id: fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Giết con chim nhại",
@@ -51,8 +59,8 @@ Product.create!([
     price: 79000,
     stock: 30,
     rating: 4.8,
-    category_id: fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "1984",
@@ -60,8 +68,8 @@ Product.create!([
     price: 89000,
     stock: 40,
     rating: 4.6,
-    category_id: fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Nhà giả kim",
@@ -69,8 +77,8 @@ Product.create!([
     price: 95000,
     stock: 40,
     rating: 4.8,
-    category_id: fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Bên dòng sông Piedra tôi ngồi và khóc",
@@ -78,8 +86,8 @@ Product.create!([
     price: 87000,
     stock: 35,
     rating: 4.3,
-    category_id: fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Sapiens: Lược sử loài người",
@@ -87,8 +95,8 @@ Product.create!([
     price: 129000,
     stock: 20,
     rating: 4.7,
-    category_id: non_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: non_fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Học để thay đổi",
@@ -96,8 +104,8 @@ Product.create!([
     price: 99000,
     stock: 15,
     rating: 4.6,
-    category_id: non_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: non_fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Khi hơi thở hóa thinh không",
@@ -105,8 +113,8 @@ Product.create!([
     price: 110000,
     stock: 25,
     rating: 4.5,
-    category_id: non_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: non_fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Từ tốt đến vĩ đại",
@@ -114,8 +122,8 @@ Product.create!([
     price: 105000,
     stock: 20,
     rating: 4.4,
-    category_id: non_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: non_fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Bí mật tư duy triệu phú",
@@ -123,8 +131,8 @@ Product.create!([
     price: 85000,
     stock: 30,
     rating: 4.6,
-    category_id: non_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: non_fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Harry Potter và Hòn đá phù thủy",
@@ -132,8 +140,8 @@ Product.create!([
     price: 95000,
     stock: 60,
     rating: 4.9,
-    category_id: fantasy.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fantasy,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Chúa tể những chiếc nhẫn: Fellowship of the Ring",
@@ -141,8 +149,8 @@ Product.create!([
     price: 120000,
     stock: 40,
     rating: 4.8,
-    category_id: fantasy.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fantasy,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Đứa trẻ mang ngọn lửa",
@@ -150,8 +158,8 @@ Product.create!([
     price: 98000,
     stock: 45,
     rating: 4.7,
-    category_id: fantasy.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: fantasy,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Cuộc sống trong tay kẻ giết người",
@@ -159,8 +167,8 @@ Product.create!([
     price: 87000,
     stock: 25,
     rating: 4.4,
-    category_id: mystery.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: mystery,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Cô gái mất tích",
@@ -168,8 +176,8 @@ Product.create!([
     price: 103000,
     stock: 20,
     rating: 4.5,
-    category_id: mystery.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: mystery,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Ánh trăng mờ",
@@ -177,8 +185,8 @@ Product.create!([
     price: 92000,
     stock: 30,
     rating: 4.6,
-    category_id: mystery.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: mystery,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Dune",
@@ -186,25 +194,31 @@ Product.create!([
     price: 115000,
     stock: 22,
     rating: 4.7,
-    category_id: science_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: science_fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   },
   {
     name: "Lịch sử tương lai",
-    desc: "Một cuốn sách về khoa học viễn tưởng và các ý tưởng tương lai.",
-    price: 89000,
+    desc: "Một cuốn sách về khoa học viễn tưởng và những khả năng tương lai.",
+    price: 99000,
     stock: 28,
     rating: 4.5,
-    category_id: science_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
-  },
-  {
-    name: "Thế giới mới",
-    desc: "Một tác phẩm khoa học viễn tưởng nổi tiếng của Aldous Huxley.",
-    price: 97000,
-    stock: 35,
-    rating: 4.4,
-    category_id: science_fiction.id,
-    img_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"  # Thay đổi URL ảnh
+    category: science_fiction,
+    image_url: "https://positivepurchasing.com/wp-content/uploads/2024/05/Category-Management-5th-ed-Book-on-table-on-slate-grey-background-for-Linktree-800x450.jpg"
   }
-])
+]
+
+products.each do |product_data|
+  product = Product.create!(
+    name: product_data[:name],
+    desc: product_data[:desc],
+    price: product_data[:price],
+    stock: product_data[:stock],
+    rating: product_data[:rating],
+    category: product_data[:category]
+  )
+
+  downloaded_image = URI.open(product_data[:image_url])
+  product.image.attach(io: downloaded_image, filename: "#{product_data[:name].parameterize}_image.jpg", content_type: "image/jpeg")
+end
+

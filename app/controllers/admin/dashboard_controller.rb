@@ -9,4 +9,6 @@ class Admin::DashboardController < Admin::AdminController
     @top_user = User.top_user
     @top_user_order_count = @top_user.present? ? @top_user.orders.count : 0
   end
+
+  def profile; end
 end

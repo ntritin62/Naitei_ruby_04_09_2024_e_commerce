@@ -9,9 +9,9 @@ password_confirmation avatar).freeze
     attachable.variant :display, resize_to_limit: [Settings.ui.avatar_size,
                             Settings.ui.avatar_size]
   end
+  has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_one :cart, dependent: :destroy
-  has_many :orders, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
