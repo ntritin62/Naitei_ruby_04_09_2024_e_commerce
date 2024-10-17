@@ -68,6 +68,7 @@ desc).include?(params[:direction]&.to_sym)) || :asc
   end
 
   def handle_create_error error
+    @categories = Category.all
     flash.now[:alert] =
       t("admin.products_admin.create.failure", error: error.message)
     render :new, status: :unprocessable_entity

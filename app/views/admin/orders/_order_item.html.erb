@@ -1,7 +1,7 @@
 <tr class="border-b border-gray-200 hover:bg-gray-100">
   <td class="py-3 px-6 text-left whitespace-nowrap">
     <div class="flex items-center">
-      <span class="font-medium"><%= order.id %></span>
+      <span class="font-medium"><%= index %></span>
     </div>
   </td>
 
@@ -22,7 +22,7 @@
   </td>
 
   <td class="py-3 px-6 text-center">
-    <span class="py-1 px-3 rounded-full text-xs <%= order_status_class(order.status) %>">
+    <span class="py-1 px-3 rounded-full text-xs <%= order_status_class(order.status) %> whitespace-nowrap">
       <%= order_status_label(order.status) %>
     </span>
   </td>

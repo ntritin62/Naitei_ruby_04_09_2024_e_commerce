@@ -7,6 +7,7 @@ class Admin::CategoriesController < Admin::AdminController
       Category.with_product_count.sort_by_params(params),
       limit: Settings.page_size
     )
+    @category = Category.new
   end
 
   def show
@@ -19,13 +20,16 @@ class Admin::CategoriesController < Admin::AdminController
 
   def create
     @category = Category.new(category_params)
-    begin
-      @category.save!
-      flash[:success] = t "admin.categories_admin.create.success"
-      redirect_to admin_category_path(@category)
-    rescue ActiveRecord::RecordInvalid
-      flash.now[:alert] = t "admin.categories_admin.create.failure"
-      render :new, status: :unprocessable_entity
+    if @category.save
+      flash[:success] = t("admin.categories_admin.create.success")
+      redirect_to admin_categories_path
+    else
+      flash.now[:alert] = t("admin.categories_admin.create.failure")
+      @pagy, @categories = pagy(
+        Category.with_product_count.sort_by_params(params),
+        limit: Settings.page_size
+      )
+      render :index, status: :unprocessable_entity
     end
   end
 
@@ -34,7 +38,7 @@ class Admin::CategoriesController < Admin::AdminController
   def update
     @category.update!(category_params)
     flash[:success] = t "admin.categories_admin.update.success"
-    redirect_to admin_category_path(@category)
+    redirect_to admin_categories_path
   rescue ActiveRecord::RecordInvalid
     flash.now[:alert] = t "admin.categories_admin.update.failure"
     render :edit, status: :unprocessable_entity
@@ -57,7 +61,7 @@ class Admin::CategoriesController < Admin::AdminController
   private
 
   def find_category
-    @category = Category.find_by(id: params[:id])
+    @category = Category.with_product_count.find_by(id: params[:id])
     return if @category
 
     flash[:alert] = t "admin.categories_admin.not_found"

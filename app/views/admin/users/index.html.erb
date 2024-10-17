@@ -13,8 +13,9 @@
     </div>
     <div>
       <%= form_with url: admin_users_path, method: :get, local: true, class: "inline-block" do %>
+        <%= label_tag :activated, t("admin.users_admin.index.status"), class: " text-sm font-medium text-gray-700" %>
         <%= select_tag :activated, options_for_select([["#{t("admin.users_admin.index.all")}", ""], ["#{t("admin.users_admin.index.activated")}", true], ["#{t("admin.users_admin.index.inactivated")}", false]], params[:activated]), class: "form-select mr-2" %>
-        
+        <%= label_tag :role, t("admin.users_admin.index.role"), class: " text-sm font-medium text-gray-700" %>
         <%= select_tag :role, options_for_select([["#{t("admin.users_admin.index.all_roles")}", ""]] + User.roles.keys.map { |role| [t("roles.#{role}"), role] }, params[:role]), class: "form-select mr-2" %>
         
         <%= submit_tag t("admin.users_admin.index.filter"), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
@@ -56,5 +57,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= render "pagy/pagy_nav", pagy: @pagy %>
+  <div style="display: flex; justify-content: center;">
+    <%= render "pagy/pagy_nav", pagy: @pagy %>
+  </div>
 </div>

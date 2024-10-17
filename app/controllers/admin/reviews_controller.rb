@@ -33,19 +33,19 @@ class Admin::ReviewsController < Admin::AdminController
 
   def search_reviews
     reviews = Review.all
-    reviews = filter_reviews_by_type(reviews)
+    reviews = filter_reviews_by_query(reviews)
     reviews = filter_reviews_by_rating(reviews)
     sort_reviews(reviews)
   end
 
-  def filter_reviews_by_type reviews
-    search_type = params[:search_type]
+  def filter_reviews_by_query reviews
     query = params[:query]
-
-    if search_type == "user" && query.present?
-      reviews.by_user_username(query)
-    elsif search_type == "product" && query.present?
-      reviews.by_product_name(query)
+    if query.present?
+      reviews.joins(:user, :product).where(
+        "LOWER(users.user_name) LIKE LOWER(:query) OR
+       LOWER(products.name) LIKE LOWER(:query)",
+        query: "%#{query.downcase}%"
+      )
     else
       reviews
     end

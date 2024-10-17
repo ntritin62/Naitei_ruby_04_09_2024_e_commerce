@@ -12,6 +12,7 @@
       <% end %>
     </div>
     <div>
+      <%= label_tag :status, t("admin.orders_admin.index.status"), class: "block text-sm font-medium text-gray-700" %>
       <%= form_with url: admin_orders_path, method: :get, local: true, class: "inline-block" do %>
         <%= select_tag :status, options_for_select([["#{t("admin.orders_admin.index.all_status")}", ""]] + Order.statuses.keys.map { |status| [t("orders.status.#{status}"), status] }, params[:status]), class: "form-select" %>
         <%= submit_tag t("admin.orders_admin.index.filter"), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
@@ -59,8 +60,12 @@
       </tr>
     </thead>
     <tbody class="text-gray-600 text-sm font-light">
-      <%= render partial: "admin/orders/order_item", collection: @orders, as: :order %>
+      <% @orders.each_with_index do |order, index| %>
+        <%= render partial: "admin/orders/order_item", locals: { order: order, index: index + 1 } %>
+      <% end %>
     </tbody>
   </table>
-  <%= render "pagy/pagy_nav", pagy: @pagy %>
+  <div style="display: flex; justify-content: center;">
+    <%= render "pagy/pagy_nav", pagy: @pagy %>
+  </div>
 </div>

@@ -15,8 +15,9 @@
     </div>
 
     <div class="flex-shrink-0">
-      <%= link_to t("admin.categories_admin.index.new"), new_admin_category_path, 
-                  class: "bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary_hover" %>
+      <button id="open-modal" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary_hover">
+        <%= t("admin.categories_admin.index.new") %>
+      </button>
     </div>
   </div>
   <table class="min-w-full bg-white border rounded-lg shadow-md overflow-hidden table-fixed">
@@ -55,5 +56,33 @@
       <% end %>
     </tbody>
   </table>
-  <%= render "pagy/pagy_nav", pagy: @pagy %>
+  <div style="display: flex; justify-content: center;">
+    <%= render "pagy/pagy_nav", pagy: @pagy %>
+  </div>
 </div>
+
+<!-- Modal -->
+<div id="modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-gray-900 bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold mb-6 text-center"><%= t "admin.categories_admin.new.title" %></h1> 
+    <%= form_with model: @category, url: admin_categories_path, local: true do |form| %>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <%= form.label :name, t("admin.categories_admin.form.name"), class: "block text-sm font-medium text-gray-700" %>
+          <%= form.text_field :name, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
+          <% if @category.errors.any? %>
+            <div class="text-red-500 text-sm">
+              <%= @category.errors.full_messages.join(", ") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <%= form.submit t("admin.categories_admin.form.create"), class: "bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary_hover" %>
+      </div>
+    <% end %>
+    <button id="close-modal" class="mt-4 bg-gray-300 py-2 px-4 rounded-lg">Close</button>
+  </div>
+</div>
+
+<%= javascript_include_tag "modal_new" %>

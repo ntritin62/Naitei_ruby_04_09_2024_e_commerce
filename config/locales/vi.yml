@@ -365,7 +365,7 @@ vi:
       index:
         title: "Danh sách đơn hàng"
         order_id: "Mã đơn hàng"
-        search_by_name: "Username"
+        search_by_name: "Tên người dùng"
         search: "Tìm"
         user: "Người dùng"
         address: "Địa chỉ"
@@ -457,7 +457,7 @@ vi:
         create: "Tạo"
       create:
         success: "Sản phẩm đã được tạo thành công."
-        failure: "Tạo sản phẩm thất bại: %{error}"
+        failure: "Tên sản phẩm, danh mục, số lượng và giá không thể để trống"
       update:
         success: "Sản phẩm đã được cập nhật thành công."
         error: "Cập nhật sản phẩm thất bại."
@@ -563,6 +563,7 @@ vi:
         no_products: "Không có sản phẩm nào."
         edit: "Chỉnh sửa danh mục"
         back: "Quay lại danh sách danh mục"
+        close: "Đóng"
       new:
         title: "Thêm Danh Mục Mới"
       form:
@@ -592,6 +593,7 @@ vi:
         created_at: "Ngày tạo"
         cancel: "Hủy"
         update: "Cập nhật"
+        close: "Đóng"
     reviews_admin:
       show:
         title: "Chi tiết đánh giá cho ID đánh giá: %{review_id}"
@@ -611,8 +613,7 @@ vi:
         role: "Vai trò"
         status: "Trạng thái"
         title: "Danh sách đánh giá"
-        search_by_user: "Tìm theo người dùng"
-        search_by_product: "Tìm theo sản phẩm"
+        search_placeholder: "Nhập tên sản phẩm hoặc tên người dùng"
         search: "Tìm kiếm"
         all_ratings: "Tất cả sao"
         star: "Sao"

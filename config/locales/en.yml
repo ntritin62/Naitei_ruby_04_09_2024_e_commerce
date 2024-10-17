@@ -421,7 +421,7 @@ en:
         create: "Create"
       create:
         success: "Product created successfully."
-        failure: "Product creation failed: %{error}"
+        failure: "Product name, category, quantity and price cannot be blank"
       update:
         success: "Product updated successfully."
         error: "Product update failed."
@@ -527,6 +527,7 @@ en:
         no_products: "No products available."
         edit: "Edit Category"
         back: "Back to Categories"
+        close: "Close"
       new:
         title: "New Category"
       form:
@@ -549,6 +550,7 @@ en:
         price: "Price"
         stock: "Stock"
         actions: "Actions"
+        close: "Close"
       edit:
         title: "Edit Category: %{category_name}"
         info_title: "Category Information"
@@ -575,8 +577,7 @@ en:
         role: "Role"
         status: "Status"
         title: "Reviews List"
-        search_by_user: "Search by User"
-        search_by_product: "Search by Product"
+        search_placeholder: "Enter the product name or user name"
         search: "Search"
         all_ratings: "All ratings"
         review_id: "Review ID"

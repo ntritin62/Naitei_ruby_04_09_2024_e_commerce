@@ -27,4 +27,8 @@ class Category < ApplicationRecord
       .select("categories.*, COUNT(products.id) AS products_count")
       .group("categories.id")
   end
+
+  def products_count
+    products.size
+  end
 end
