@@ -11,15 +11,16 @@
     <p class="text-gray-700 col-span-2 text-right"><%= order_item.price * order_item.quantity %></p>
   </div>
   <% if @order.delivered? %>
-    <div class="flex items-center mt-5 ">
-      <% unless order_item.product.reviews.exists?(user_id: current_user.id) %>
+    <div class="flex items-center mt-5">
+      <% reviewed = order_item.product.reviews.exists?(user_id: current_user.id, order_id: @order.id) %>
+      <% unless reviewed %>
         <%= link_to new_user_order_product_review_path(current_user, @order, order_item.product), class: "px-2 py-1 text-xs text-primary border border-primary rounded ml-2" do %>
           <%= t ".review" %>
         <% end %>
       <% else %>
-        <% user_review = order_item.product.review_by_user(current_user) %>
+        <% user_review = order_item.product.reviews.find_by(user_id: current_user.id, order_id: @order.id) %>
         <%= render "reviews/review", user_review: user_review, order: @order, product: order_item.product %>
       <% end %>
     </div>
-  <%end%>
+  <% end %>
 </div>

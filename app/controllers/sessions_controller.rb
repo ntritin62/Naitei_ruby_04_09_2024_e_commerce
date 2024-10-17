@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_user?, only: %i(new create)
   before_action :find_user, only: :create
 
   def new; end
@@ -62,5 +63,12 @@ class SessionsController < ApplicationController
 
   def show_not_activated_msg
     flash.now[:danger] = t ".not_activated"
+  end
+
+  def logged_in_user?
+    return unless logged_in?
+
+    store_location
+    redirect_to root_path, status: :see_other
   end
 end

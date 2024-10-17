@@ -1,8 +1,12 @@
 <% if @cart.cart_items.empty? %>
   <%= turbo_stream.replace "cart", partial: "carts/empty_cart" %>
 <% else %>
-  <%= turbo_stream.update "cart-item-#{@cart_item.id}-quantity" do %>
-    <%= @cart_item.quantity %>
+  <% if @cart_item.quantity == 0 %>
+    <%= turbo_stream.remove "cart-item-#{@cart_item.id}" %>
+  <% else %>
+    <%= turbo_stream.update "cart-item-#{@cart_item.id}-quantity" do %>
+      <%= @cart_item.quantity %>
+    <% end %>
   <% end %>
   <%= turbo_stream.update "cart-price" do %>
     <%= @total %>

@@ -2,6 +2,7 @@ class Review < ApplicationRecord
   REVIEW_REQUIRE_ATTRIBUTES = %i(rating comment).freeze
   belongs_to :product
   belongs_to :user
+  belongs_to :order
 
   validates :rating, presence: true,
             numericality: {greater_than_or_equal_to: Settings.value.rate_min,
