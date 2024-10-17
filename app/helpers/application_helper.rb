@@ -7,12 +7,16 @@ module ApplicationHelper
   end
 
   def message_class message_type
-    case message_type
-    when "success"
+    case message_type.to_sym
+    when :notice
       "text-green-600 bg-green-200"
-    when "danger"
+    when :success
+      "text-green-600 bg-green-200"
+    when :danger
       "text-red-600 bg-red-200"
-    when "info"
+    when :alert
+      "text-red-600 bg-red-200"
+    when :info
       "text-blue-600 bg-blue-200"
     else
       "text-yellow-600 bg-yellow-200"

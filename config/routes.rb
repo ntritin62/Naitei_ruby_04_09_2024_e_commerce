@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
+    devise_for :users
+    as :user do
+      get "signin" => "devise/sessions#new"   
+      post "signin" => "devise/sessions#create" 
+      delete "signout" => "devise/sessions#destroy"
+    end
     resources :users do
       resources :addresses, except: :show
       resources :orders, only: %i(index order_details) do
