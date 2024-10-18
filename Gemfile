@@ -6,6 +6,7 @@ ruby "3.2.2"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "config"
+gem "devise", "~> 4.1"
 gem "dotenv-rails", groups: [:development, :test]
 gem "faker"
 gem "font-awesome-sass"

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
     flash[:danger] = t ".unauthenticated"
     store_location
-    redirect_to login_path, status: :see_other
+    redirect_to new_user_session_path, status: :see_other
   end
 
   def correct_user
@@ -26,5 +26,13 @@ class ApplicationController < ActionController::Base
 
     flash[:danger] = t ".unauthorized"
     redirect_to root_path, status: :see_other
+  end
+
+  def after_sign_in_path_for resource
+    if resource.admin?
+      admin_dashboard_path
+    else
+      session[:forwarding_url] || root_path
+    end
   end
 end

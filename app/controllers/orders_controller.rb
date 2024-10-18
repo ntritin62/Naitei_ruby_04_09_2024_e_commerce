@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_cart_items, only: [:new, :create]
   before_action :set_order, only: [:show]
-  before_action :set_user, :correct_user, :logged_in_user,
+  before_action :set_user, :logged_in_user, :correct_user,
                 only: %i(order_details index cancel)
   before_action :set_order_details, only: %i(order_details)
   before_action :set_order_cancel, only: %i(cancel)
