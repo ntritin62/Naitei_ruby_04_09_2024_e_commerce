@@ -14,6 +14,7 @@
       <% end %>
     </div>
     <div>
+      <%= label_tag :category, t("admin.products_admin.form.category"), class: "block text-sm font-medium text-gray-700" %>
       <%= form_with url: admin_products_path, method: :get, local: true, class: "inline-block" do %>
         <%= select_tag :category, options_for_select(@categories, params[:category]), class: "form-select" %>
         <%= submit_tag t("admin.products_admin.index.filter"), class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700" %>
@@ -64,5 +65,7 @@
       <% end %>
     </tbody>
   </table>
-  <%= render "pagy/pagy_nav", pagy: @pagy %>
+  <div style="display: flex; justify-content: center;">
+    <%= render "pagy/pagy_nav", pagy: @pagy %>
+  </div>
 </div>

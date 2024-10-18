@@ -4,27 +4,27 @@
     <%= form_with model: @product, url: admin_products_path, local: true do |form| %>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <%= form.label :name, t("admin.products_admin.form.name"), class: "block text-sm font-medium text-gray-700" %>
+          <%= form.label :name, "#{t("admin.products_admin.form.name")} <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
           <%= form.text_field :name, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
         </div>
         <div>
-          <%= form.label :price, t("admin.products_admin.form.price"), class: "block text-sm font-medium text-gray-700" %>
+          <%= form.label :price, "#{t("admin.products_admin.form.price")} <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
           <%= form.number_field :price, step: 1000, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
         </div>
         <div>
-          <%= form.label :stock, t("admin.products_admin.form.stock"), class: "block text-sm font-medium text-gray-700" %>
+          <%= form.label :stock, "#{t("admin.products_admin.form.stock")} <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
           <%= form.number_field :stock, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
         </div>
-<div>
-  <%= form.label :image, t("admin.products_admin.form.image"), class: "block text-sm font-medium text-gray-700" %>
-  <%= form.file_field :image, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
-</div>
+        <div>
+          <%= form.label :image, t("admin.products_admin.form.image"), class: "block text-sm font-medium text-gray-700" %>
+          <%= form.file_field :image, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
+        </div>
         <div class="md:col-span-2">
           <%= form.label :desc, t("admin.products_admin.form.description"), class: "block text-sm font-medium text-gray-700" %>
           <%= form.text_area :desc, rows: 5, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
         </div>
         <div>
-          <%= form.label :category_id, t("admin.products_admin.form.category"), class: "block text-sm font-medium text-gray-700" %>
+          <%= form.label :category_id, "#{t("admin.products_admin.form.category")} <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
           <%= form.collection_select :category_id, @categories, :id, :name, prompt: t("admin.products_admin.form.select_category"), class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
         </div>
       </div>
